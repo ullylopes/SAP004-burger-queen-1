@@ -102,8 +102,6 @@ Finalmente, a interface deve ser pensada específicamente para rodar em **tablet
 
 ## 4. Considerações gerais
 
-Este projeto é individual.
-
 Trabalhe integralmente uma história de usuário antes de passar para a próxima. Cumpra todas as histórias possíveis dentro do tempo especificado.
 
 A lógica do projeto deve ser totalmente implementada em JavaScript (ES6 +). Neste projeto você deve usar [React](https://reactjs.org/).
@@ -257,7 +255,7 @@ As seções chamadas Hacker Edition são opcionais. Se você terminou tudo e ain
 
 #### HU
 
-#### HU 2: Criar perfil
+#### HU 1: Criar perfil
 
 - [ ] Poder realizar cadastro com e-mail, senha e função.
 - [ ] Poder realizar login com e-mail e senha.
@@ -290,15 +288,6 @@ As seções chamadas Hacker Edition são opcionais. Se você terminou tudo e ain
 - [ ] Status atual do pedido sempre visível enquanto fazemos um pedido.
 
 ### Hacker Edition
-
-- [ ] Segue as recomendações de PWAs.
-- [ ] Funciona bem offline.
-
-#### HU 4: Perfil do Usuário
-
-- [ ] Criar login e senha.
-- [ ] Criar tipo de usuário (cozinha / salão).
-- [ ] Entrar na tela correta para cada usuário.
 
 #### Testes
 
