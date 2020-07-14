@@ -2,16 +2,16 @@
 
 ## Índice
 
-* [1. Preâmbulo](#1-preâmbulo)
-* [2. Resumo do projeto](#2-resumo-do-projeto)
-* [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
-* [4. Considerações gerais](#4-considerações-gerais)
-* [5. Critérios de aceitação mínimos do
+- [1. Preâmbulo](#1-preâmbulo)
+- [2. Resumo do projeto](#2-resumo-do-projeto)
+- [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
+- [4. Considerações gerais](#4-considerações-gerais)
+- [5. Critérios de aceitação mínimos do
   projeto](#5-critérios-de-aceitação-mínimos-do-projeto)
-* [6. Hacker Edition](#6-hacker-edition)
-* [7. Dicas e leituras complementares](#7-dicas-e-leituras-complementares)
+- [6. Hacker Edition](#6-hacker-edition)
+- [7. Dicas e leituras complementares](#7-dicas-e-leituras-complementares)
 
-***
+---
 
 ## 1. Preâmbulo
 
@@ -52,41 +52,41 @@ Estas são as informações que temos do cliente:
 
 > Somos **Burger Queen**, um fast food 24hrs.
 >
->A nossa proposta de serviço 24 horas foi muito bem recebida e, para continuar a
->crescer, precisamos de um sistema que nos ajude a receber pedidos de nossos
->clientes.
+> A nossa proposta de serviço 24 horas foi muito bem recebida e, para continuar a
+> crescer, precisamos de um sistema que nos ajude a receber pedidos de nossos
+> clientes.
 >
->Nós temos 2 menus. Um muito simples para o café da manhã:
+> Nós temos 2 menus. Um muito simples para o café da manhã:
 >
->| Ítem                      |Preço R$|
->|---------------------------|------|
->| Café americano            |    5 |
->| Café com leite            |    7 |
->| Misto Quente              |   10 |
->| Suco de fruta natural     |    7 |
+> | Ítem                  | Preço R\$ |
+> | --------------------- | --------- |
+> | Café americano        | 5         |
+> | Café com leite        | 7         |
+> | Misto Quente          | 10        |
+> | Suco de fruta natural | 7         |
 >
->E outro menu para o resto do dia:
+> E outro menu para o resto do dia:
 >
->| Ítem                      |Preço |
->|---------------------------|------|
->|**Hambúrgueres**           |   **R$**   |
->|Hambúrguer simples         |    10|
->|Hambúrguer duplo           |    15|
->|**Acompanhamentos**        |   **R$**   |
->|Batata frita               |     5|
->|Anéis de cebola            |     5|
->|**Bebidas**                |   **R$**   |
->|Água 500ml                 |     5|
->|Água 750ml                 |     7|
->|Refrigerante 500ml         |     7|
->|Refrigerante 750ml         |    10|
+> | Ítem                | Preço   |
+> | ------------------- | ------- |
+> | **Hambúrgueres**    | **R\$** |
+> | Hambúrguer simples  | 10      |
+> | Hambúrguer duplo    | 15      |
+> | **Acompanhamentos** | **R\$** |
+> | Batata frita        | 5       |
+> | Anéis de cebola     | 5       |
+> | **Bebidas**         | **R\$** |
+> | Água 500ml          | 5       |
+> | Água 750ml          | 7       |
+> | Refrigerante 500ml  | 7       |
+> | Refrigerante 750ml  | 10      |
 >
->**Importante:** Os clientes podem escolher entre hambúrgueres de carne bovina,
->frango ou vegetariano. Além disso, por um adicional de R$ 1,00 , eles podem
->adicionar queijo ou ovo.
+> **Importante:** Os clientes podem escolher entre hambúrgueres de carne bovina,
+> frango ou vegetariano. Além disso, por um adicional de R\$ 1,00 , eles podem
+> adicionar queijo ou ovo.
 >
->Nossos clientes são bastante indecisos, por isso é muito comum que eles mudem o
->seu pedido várias vezes antes de finalizar.
+> Nossos clientes são bastante indecisos, por isso é muito comum que eles mudem o
+> seu pedido várias vezes antes de finalizar.
 
 A interface deve mostrar os dois menus (café da manhã e restante do dia), cada
 um com todos os seus _produtos_. O usuário deve poder escolher que _produtos_
@@ -99,7 +99,7 @@ adicionar e a interface deve mostrar o _resumo do pedido_ com o custo total.
 O objetivo principal é aprender a construir uma interface web usando React. Esse framework front-end ataca o seguinte problema: **como manter a interface e estado sincronizados**. Portanto, esta experiência espera familiarizá-la com o conceito de estado da tela, e como cada mudança no estado vai refletir na interface (por exemplo, toda vez que adicionamos um _produto_ para um _pedido_, a interface deve atualizar a lista de pedidos e o total).
 
 Finalmente, a interface deve ser pensada específicamente para rodar em **tablets**.
- 
+
 ## 4. Considerações gerais
 
 Este projeto é individual.
@@ -125,78 +125,9 @@ Para iniciar este projeto você terá que fazer um _fork_ e _clone_ deste reposi
 O [_Product Owner_](https://www.youtube.com/watch?v=7lhnYbmovb4) nos apresentou
 este _backlog_ que é o resultado do seu trabalho com o cliente até hoje.
 
-***
+---
 
-#### [História de usuário 1] Garçom/Garçonete deve poder anotar o seu pedido
-
-Eu como garçom/garçonete quero poder anotar o meu pedido saber o valor de cada 
-produto e poder enviar o pedido para a cozinha para ser preparado.
-
-##### Critérios de aceitação
-
-O que deve acontecer para satisfazer as necessidades do usuário?
-
-* Anotar o nome e mesa.
-* Adicionar produtos aos pedidos.
-* Excluir produtos.
-* Ver resumo e o total da compra.
-* Enviar o pedido para a cozinha (guardar em algum banco de dados).
-* Funcionar bem e se adequar a um _tablet_.
-
-##### Definição de pronto
-
-O acordado abaixo deve acontecer para dizer que a história está terminada:
-
-* Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-* Você deu deploy de seu aplicativo.
-
-***
-
-#### [História de usuário 2] Chefe de cozinha deve ver os pedidos
-
-Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
-
-##### Critérios de aceitação
-
-* Ver os pedidos à medida em que são feitos.
-* Marcar os pedidos que foram preparados e estão prontos para serem servidos.
-* Ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
-
-##### Definição de pronto
-
-* Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-* Você deu deploy de seu aplicativo.
-
-***
-
-#### [História de usuário 3] Garçom/Garçonete deve ver os pedidos prontos para servir
-
-Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los rapidamente aos clientes.
-
-##### Critérios de aceitação
-
-* Ver a lista de pedidos prontos para servir.
-* Marque os pedidos que foram entregues.
-
-##### Definição de pronto
-
-* Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
-* Você deu deploy de seu aplicativo.
-* Os dados devem ser mantidos intactos, mesmo depois que um pedido terminado. Tudo isso para poder ter estatísticas no futuro.
-
-***
-
-## 6. Hacker Edition 
-
-As seções chamadas Hacker Edition são opcionais. Se você terminou tudo e ainda sobrou tempo, faça essa parte. Assim você poderá aprofundar e exercitar mais sobre os objetivos de aprendizagem do projeto.
-
-* Siga as recomendações para PWAs (Progressive Web Apps), para criar uma aplicação offline. Para orientá-las sobre este tema,recomendamos que você use Lighthouse, que é uma ferramenta do Google que nos ajuda a garantir que nossos aplicativos web sigam "boas práticas".
-
-* Faça testes que cubram 100% de statements, functions, lines e branches.
-
-* Implemente a seguinte história de usuário: 
-
-#### [História de usuário 4] Usuário deve ter seu perfil (login/senha) para acessar o sistema.
+#### [História de usuário 1] Usuário deve ter seu perfil (login/senha) para acessar o sistema.
 
 Eu como funcionário do restaurante quero entrar na plataforma e ver apenas a tela importante para o meu trabalho.
 
@@ -204,122 +135,174 @@ Eu como funcionário do restaurante quero entrar na plataforma e ver apenas a te
 
 O que deve acontecer para satisfazer as necessidades do usuário?
 
-* Criar login e senha.
-* Criar tipo de usuário (cozinha / salão).
-* Entrar na tela correta para cada usuário.
+- Criar login e senha.
+- Registar tipo de usuário (cozinha / salão), login e senha.
+- Entrar na tela correta para cada usuário.
 
 ##### Definição de pronto
 
 O acordado abaixo deve acontecer para dizer que a história está terminada:
 
-* Você fez testes de usabilidade e incorporou o feedback do usuário.
-* Você deu deploy de seu aplicativo.
+- Você fez testes de usabilidade e incorporou o feedback do usuário.
+- Você deu deploy de seu aplicativo.
 
-***
+#### [História de usuário 2] Garçom/Garçonete deve poder anotar o seu pedido
+
+Eu como garçom/garçonete quero poder anotar o meu pedido saber o valor de cada
+produto e poder enviar o pedido para a cozinha para ser preparado.
+
+##### Critérios de aceitação
+
+O que deve acontecer para satisfazer as necessidades do usuário?
+
+- Anotar o nome e mesa.
+- Adicionar produtos aos pedidos.
+- Excluir produtos.
+- Ver resumo e o total da compra.
+- Enviar o pedido para a cozinha (guardar em algum banco de dados).
+- Funcionar bem e se adequar a um _tablet_.
+
+##### Definição de pronto
+
+O acordado abaixo deve acontecer para dizer que a história está terminada:
+
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+- Você deu deploy de seu aplicativo.
+
+---
+
+#### [História de usuário 3] Chefe de cozinha deve ver os pedidos
+
+Eu como chefe de cozinha quero ver os pedidos dos clientes em ordem, poder marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
+
+##### Critérios de aceitação
+
+- Ver os pedidos à medida em que são feitos.
+- Marcar os pedidos que foram preparados e estão prontos para serem servidos.
+- Ver o tempo que levou para preparar o pedido desde que chegou, até ser marcado como concluído.
+
+##### Definição de pronto
+
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+- Você deu deploy de seu aplicativo.
+
+---
+
+#### [História de usuário 4] Garçom/Garçonete deve ver os pedidos prontos para servir
+
+Eu como garçom/garçonete quero ver os pedidos que estão prontos para entregá-los rapidamente aos clientes.
+
+##### Critérios de aceitação
+
+- Ver a lista de pedidos prontos para servir.
+- Marque os pedidos que foram entregues.
+
+##### Definição de pronto
+
+- Você fez _testes_ de usabilidade e incorporou o _feedback_ do usuário.
+- Você deu deploy de seu aplicativo.
+- Os dados devem ser mantidos intactos, mesmo depois que um pedido terminado. Tudo isso para poder ter estatísticas no futuro.
+
+---
+
+## 6. Hacker Edition
+
+As seções chamadas Hacker Edition são opcionais. Se você terminou tudo e ainda sobrou tempo, faça essa parte. Assim você poderá aprofundar e exercitar mais sobre os objetivos de aprendizagem do projeto.
+
+- Faça testes que cubram 100% de statements, functions, lines e branches.
+
+---
 
 ## 7. Dicas e leituras complementares
 
 ### Primeros passos
 
-* Faça um _fork_ deste repositório (no GitHub).
+- Crie um projeto usando `create-react-app`
 
-* Clone seu _fork_ no seu computador:
+- Crie um projeto no [Firebase](https://firebase.google.com/)
 
-*  Crie um projeto usando `create-react-app`
+- Converta o menu descrito pelo cliente em uma coleção no Firebase.
 
-* Crie um projeto no [Firebase](https://firebase.google.com/)
-
-* Converta o menu descrito pelo cliente em uma coleção no Firebase.
-
-***
+---
 
 ### Outros recursos
 
 #### Framework / biblioteca
 
-* [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 
 #### React Hooks
 
-* [Entendendo React Hooks](https://medium.com/@higornevesmarques/entendendo-react-hooks-2c0efae276a3)
-* [React Hooks - Rocketseat](https://blog.rocketseat.com.br/react-hooks/)
-* [Habemus React Hooks](https://willianjusten.com.br/habemus-react-hooks/)
+- [Entendendo React Hooks](https://medium.com/@higornevesmarques/entendendo-react-hooks-2c0efae276a3)
+- [React Hooks - Rocketseat](https://blog.rocketseat.com.br/react-hooks/)
+- [Habemus React Hooks](https://willianjusten.com.br/habemus-react-hooks/)
 
 #### Ferramentas
 
-* [npm-scripts](https://docs.npmjs.com/misc/scripts)
-* [Babel](https://babeljs.io/)
-* [webpack](https://webpack.js.org/)
-* [Aphrodite](https://github.com/Khan/aphrodite)
+- [npm-scripts](https://docs.npmjs.com/misc/scripts)
+- [Babel](https://babeljs.io/)
+- [webpack](https://webpack.js.org/)
+- [Aphrodite](https://github.com/Khan/aphrodite)
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [Firebase Firestore - Vídeo Dani](https://www.youtube.com/watch?v=y-p8G3hPrMI)
+- [Firebase Hosting - Vídeo Dani](https://www.youtube.com/watch?v=0R2Ur0xKNz4)
+- [Firebase Auth - Vídeo Moni](https://www.loom.com/share/3e2cafa9b3ed4bd68bda6e8f7d2b0395)
 
-#### PWA
-
-* [Seu primeiro Progressive Web App - Google
-  developers](https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/?hl=es)
-* [Progressive Web Apps -
-  codigofacilito.com](https://codigofacilito.com/articulos/progressive-apps)
-* [offlinefirst.org](http://offlinefirst.org/)
-* [Usando Service Workers -
-  MDN](https://developer.mozilla.org/pt-BR/docs/Web/API/Service_Worker_API/Using_Service_Workers)
-* [Como habilitar dados sem conexão - Firebase
-  Docs](https://firebase.google.com/docs/firestore/manage-data/enable-offline?hl=es-419) 
-
-#### Serverless
-
-* [Serverless Framework 1.0 - Pagar.me Talks](https://www.youtube.com/watch?v=2oNovfw3V08)
-* [Firebase](https://firebase.google.com/)
-* [Serverless Architectures - Martin
-  Fowler](https://www.martinfowler.com/articles/serverless.html)
- 
 ## Checklist
 
 ### `README.md`
 
-* [ ] Documentação do processo de design.
-* [ ] Inclui informações para desenvolvedores (dependências, instalação, uso, testes...)
+- [ ] Documentação do processo de design.
+- [ ] Inclui informações para desenvolvedores (dependências, instalação, uso, testes...)
 
 #### HU
 
-#### HU 1: Anotar pedidos
+#### HU 2: Criar perfil
 
-* [ ] Digitar o nome do cliente e mesa.
-* [ ] Filtrar _menu_ para _café da manhã_ e _almoço/jantar_.
-* [ ] Adicionar item ao pedido.
-* [ ] Excluir item do pedido.
-* [ ] Mostrar _resumo_ do pedido com todos os itens e o total.
-* [ ] Enviar para a cozinha (isso deve salvar o pedido).
+- [ ] Poder realizar cadastro com e-mail, senha e função.
+- [ ] Poder realizar login com e-mail e senha.
+- [ ] Redirecionar para a tela correta.
 
-#### HU 2: Ver pedidos na cozinha
+#### HU 2: Anotar pedidos
 
-* [ ] Visualizar pedidos pendentes para produção.
-* [ ] Marcar pedido como pronto para entrega.
-* [ ] Ver histórico dos pedidos.
+- [ ] Digitar o nome do cliente e mesa.
+- [ ] Filtrar _menu_ para _café da manhã_ e _almoço/jantar_.
+- [ ] Adicionar item ao pedido.
+- [ ] Excluir item do pedido.
+- [ ] Mostrar _resumo_ do pedido com todos os itens e o total.
+- [ ] Enviar para a cozinha (isso deve salvar o pedido).
 
-#### HU 3: Entrega de pedidos
+#### HU 3: Ver pedidos na cozinha
 
-* [ ] Visualizar pedidos pendentes para entrega.
-* [ ] Marcar pedido como entregue ao cliente.
+- [ ] Visualizar pedidos pendentes para produção.
+- [ ] Marcar pedido como pronto para entrega.
+- [ ] Ver histórico dos pedidos.
+
+#### HU 4: Entrega de pedidos
+
+- [ ] Visualizar pedidos pendentes para entrega.
+- [ ] Marcar pedido como entregue ao cliente.
 
 ### UX
 
-* [ ] Funciona bem em tablets.
-* [ ] Fácil utilização em telas sensíveis ao toque.
-* [ ] Status atual do pedido sempre visível enquanto fazemos um pedido.
+- [ ] Funciona bem em tablets.
+- [ ] Fácil utilização em telas sensíveis ao toque.
+- [ ] Status atual do pedido sempre visível enquanto fazemos um pedido.
 
 ### Hacker Edition
 
-* [ ] Segue as recomendações de PWAs.
-* [ ] Funciona bem offline.
+- [ ] Segue as recomendações de PWAs.
+- [ ] Funciona bem offline.
 
 #### HU 4: Perfil do Usuário
 
-* [ ] Criar login e senha.
-* [ ] Criar tipo de usuário (cozinha / salão).
-* [ ] Entrar na tela correta para cada usuário.
+- [ ] Criar login e senha.
+- [ ] Criar tipo de usuário (cozinha / salão).
+- [ ] Entrar na tela correta para cada usuário.
 
 #### Testes
 
-* [ ] 100% de cobertura de _statements_.
-* [ ] 100% de cobertura de _functions_.
-* [ ] 100% de cobertura de _lines_.
-* [ ] 100% de cobertura de _branches_.
+- [ ] 100% de cobertura de _statements_.
+- [ ] 100% de cobertura de _functions_.
+- [ ] 100% de cobertura de _lines_.
+- [ ] 100% de cobertura de _branches_.
