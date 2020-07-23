@@ -7,6 +7,11 @@ import Register from './view/register/';
 
 
 function App() {
+
+  const fineOk = () => {
+    alert("Fine")
+  }
+
   return (
     <Router>
       <Route exact path='/' component={Login} />
@@ -17,3 +22,9 @@ function App() {
 }
 
 export default App;
+
+/*
+<header className="App-header">
+  <img src={logo} className="App-logo" alt="logo" />
+</header>
+*/
