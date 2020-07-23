@@ -4,6 +4,7 @@
     margin: auto;
     background-color: #F2B737;
     height: 100vh;
+    align-items: center;
 }
 
 .btn-login {
@@ -17,12 +18,12 @@
 
 }
 
-.opcoes-login a {
+.nav-register a {
     text-decoration: none;
     color: #F21D56;
     transition: .3s ease-in;
 }
 
-.opcoes-login a:hover {
+.nav-register a:hover {
     color: #ffffff;
 }

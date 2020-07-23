@@ -1,5 +1,10 @@
-import Button from './components/Button.js'
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+/*PAGINAS*/
+import Login from './view/login/';
+import Register from './view/register/';
+
 
 function App() {
 
@@ -8,13 +13,11 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <p>Zaine</p>
-      <br/>
-      <Button id="01" class="App-link" handleClick={fineOk} name="Ok"/>
-      <br/>
-      <Button id="02" handleClick={() =>{alert("Hii")}} name="Olá"/>
-    </div>
+    <Router>
+      <Route exact path='/' component={Login} />
+      <Route exact path='/register' component={Register} />
+
+    </Router>
   );
 }
 
