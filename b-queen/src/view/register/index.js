@@ -20,15 +20,8 @@ const Register = () => {
         console.log(radioLocal)
     }, [radioLocal])
 
-    const registerFirebase = () => {
-        /*
-        alert(name)
-        alert(email)
-        alert(password)
-        alert(confirmPassword)
-        alert(radioLocal)        
-        */       
-        
+    const registerFirebase = () => {     
+            
             if(password !== confirmPassword){
 
             }else{
@@ -55,14 +48,22 @@ const Register = () => {
                             name: name,
                             local: radioLocal
                         })
-                        alert("Cadastro Efetuado!")                    
+
+                        alert("Cadastro Efetuado!") 
+                        
+                            if(radioLocal === "salao"){
+
+                            }else if(radioLocal === "cozinha"){
+
+                            }
+                                           
                         }
                     })
                 }).catch(error =>{
                     setErrorMessage('error')
                     alert("Houve um erro ao cadastrar!")
                 })  
-            }           
+            }        
     }
     
     return(
@@ -74,13 +75,13 @@ const Register = () => {
                     <p className="edit-text-color" id="register-title">Cadastro</p>
                     <div className="for-border">                     
 
-                        <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Nome"/>
+                        <Input onChange={(e) => setName(e.target.value)} type="text" placeholder="Nome"/>
                         
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email"/>
+                        <Input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email"/>
 
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" id="registration-password" placeholder="Senha"/>
+                        <Input onChange={(e) => setPassword(e.target.value)} type="password" id="registration-password" placeholder="Senha"/>
 
-                        <input onChange={(e) => setConfirmPassword(e.target.value) } type="password" id="confirm-registration-password" placeholder="Confirmar Senha"/>
+                        <Input onChange={(e) => setConfirmPassword(e.target.value) } type="password" id="confirm-registration-password" placeholder="Confirmar Senha"/>
 
                         <p className="edit-text-color">Selecione o setor de trabalho:</p>
 
@@ -94,14 +95,15 @@ const Register = () => {
 
                         <br/>
                     </div>
-<Link to='login'>
-                    <button className="btn btn-register-page edit-text-color" type="button">Cancelar</button>
-</Link>
+                    
+                    <Link to='login'>
+                        <button className="btn btn-register-page edit-text-color" type="button">Cancelar</button>
+                    </Link>
                     <button onClick={registerFirebase} className="btn btn-register-page edit-text-color" type="button">Cadastrar</button>
                     
                 </form>
             </div>
         </div>
     )
-
-export default Register;
+}
+    export default Register;
