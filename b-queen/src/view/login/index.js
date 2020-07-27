@@ -38,11 +38,8 @@ function Login(props) {
 
   return (
     <div className='login-content d-flex'>
-
       <form className="form-signin mx-auto ">
-
         <img src={logo} class="img-fluid" alt='logo' />
-
         <Input
           type='text'
           placeholder='Email'
@@ -50,7 +47,7 @@ function Login(props) {
             (e) => setEmail(e.target.value)
           }
         />
-        <Input
+        <Input className='form-control form-control-lg my-3 form-login'
           type='password'
           placeholder='Senha'
           onChange={
@@ -59,16 +56,17 @@ function Login(props) {
         />
         <Button
           name='Entrar'
-          handleCLick={
-            (e) => loginCall(e)
+          handleClick={
+            (e) => {
+              loginCall(e)
+            }
           }
         />
         {
           errorMsg ? (
-            <div> {errorMsg}</div>
+            <div className='error-msg'> {errorMsg}</div>
           ) : ""
         }
-
         <div className='nav-register mt-5 text-center'>
           <p className='mx-2'>Ainda não é cadastrado?
              <Link to='register' className='mx-2'><u>Cadastre-se clicando aqui</u></Link>

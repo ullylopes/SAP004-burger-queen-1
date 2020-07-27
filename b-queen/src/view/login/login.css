@@ -1,8 +1,9 @@
 *{
-    background-color: #F2B737;
+    
 }
 
 .login-content {
+    background-color: #F2B737;
     width: 100vw;
     padding: 15%;
     margin: auto;
@@ -16,14 +17,28 @@
 
 .nav-register{
     color: #F21D56;
+    background-color: #F2B737;
 }
 
 .nav-register a {
     text-decoration: none;
     color: #F21D56;
     transition: .3s ease-in;
+    
 }
 
 .nav-register a:hover {
-    color: #ffffff;
+    color: #facbca;
+}
+
+.error-msg {
+    font-size: larger;
+    text-align: center;
+    color: #F21D56;
+    border-radius: 8px;
+    margin-top: 10%;
+    border: 2px solid #F21D56;
+    padding: 2%;
+    background-color: #f7d7d6;
+    font-weight: bold;
 }
