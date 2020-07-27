@@ -4,7 +4,7 @@ import firebase from '../../config/firebase';
 import 'firebase/auth';
 import { Link } from 'react-router-dom';
 
-function Register(){  
+const Register = () => {  
     
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -12,6 +12,10 @@ function Register(){
     const [confirmPassword, setConfirmPassword] = useState();
     const [errorType, setErrorType] = useState();
     const [errorMessage, setErrorMessage] = useState();
+
+    const [radioSalao, setRadioSalao] = useState();
+    const [radioCozinha, setRadioCozinha] = useState();
+    
     
     const registerFirebase = () => {
         setErrorType(null)   
@@ -71,11 +75,14 @@ function Register(){
 
                         <p className="edit-text-color">Selecione o setor de trabalho:</p>
 
-                        <input type="radio" id="radio-hall" className="mx-2" name="local" value="salao"/>
-                        <label for="salao" className="edit-text-color">&#127828; Salão </label>
                         
-                        <input type="radio" id="radio-kitchen" className="mx-2" name="local" value="cozinha"/>
-                        <label for="cozinha" className="edit-text-color">&#128293; Cozinha</label>
+                        <label for="salao" className="edit-text-color">
+                            <input type="radio" id="radio-hall" className="mx-2" name="local" value="salao" checked={this.state.local === 'salao'} onChange={this.}/>
+                        &#127828; Salão </label>
+                        
+                        <label for="cozinha" className="edit-text-color">
+                            <input type="radio" id="radio-kitchen" className="mx-2" name="local" value="cozinha" checked={this.state.local === 'cozinha'} onChange={this.}/>
+                        &#128293; Cozinha</label>
 
                         <br/>
                     </div>
