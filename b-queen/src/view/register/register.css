@@ -18,6 +18,12 @@
     margin-left: 4%;
     margin-right: 4%;
     margin-top: 5%;  
+    transition: 1s;
+}
+
+.btn-register-page:hover{
+    background-color: #F2B737;
+    color: #f21d57;
 }
 
 .edit-text-color{
