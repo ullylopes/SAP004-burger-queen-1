@@ -77,11 +77,11 @@ const Register = () => {
 
                         
                         <label for="salao" className="edit-text-color">
-                            <input type="radio" id="radio-hall" className="mx-2" name="local" value="salao" checked={this.state.local === 'salao'} onChange={this.}/>
+                            <input type="radio" id="radio-hall" className="mx-2" name="local" value="salao"/>
                         &#127828; Salão </label>
                         
                         <label for="cozinha" className="edit-text-color">
-                            <input type="radio" id="radio-kitchen" className="mx-2" name="local" value="cozinha" checked={this.state.local === 'cozinha'} onChange={this.}/>
+                            <input type="radio" id="radio-kitchen" className="mx-2" name="local" value="cozinha"/>
                         &#128293; Cozinha</label>
 
                         <br/>
