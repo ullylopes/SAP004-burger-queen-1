@@ -4,7 +4,6 @@ import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Input from '../../components/Input'
 import { Link } from 'react-router-dom';
-import miniLogo from '../../img/mini-logo.png';
 
 const Register = () => {  
     
@@ -95,13 +94,14 @@ const Register = () => {
 
                         <br/>
                     </div>
+<Link to='login'>
                     <button className="btn btn-register-page edit-text-color" type="button">Cancelar</button>
+</Link>
                     <button onClick={registerFirebase} className="btn btn-register-page edit-text-color" type="button">Cadastrar</button>
                     
                 </form>
             </div>
         </div>
     )
-}
 
 export default Register;

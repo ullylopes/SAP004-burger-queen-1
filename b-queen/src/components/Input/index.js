@@ -3,7 +3,13 @@ import './style.css';
 
 const Input = (props) => {
     return (
-        <input onChange={props.handleChange} className='form-control form-control-lg my-1 form-login' placeholder={props.placeholder} />
+        <input
+            input type={props.type}
+            className='form-control form-control-lg my-3 form-login'
+            placeholder={props.placeholder}
+            value={props.value}
+            onChange={props.onChange}>
+        </input>
     )
 };
 export default Input;
