@@ -11,6 +11,5 @@ const Input = (props) => {
             onChange={props.onChange}>
         </input>
     )
-
 };
 export default Input;

@@ -3,7 +3,7 @@ import '../../view/login/login.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import { Link } from 'react-router-dom';
-import logo from '../../img/logo.png';
+import logoCut from '../../img/logo-cut.png';
 import Button from '../../components/Button/index';
 import Input from '../../components/Input/index';
 import authErrors from '../../config/firebase-error';
@@ -39,7 +39,7 @@ function Login(props) {
   return (
     <div className='login-content d-flex'>
       <form className="form-signin mx-auto ">
-        <img src={logo} class="img-fluid" alt='logo' />
+        <img src={logoCut} class="img-fluid" alt='logo' />
         <Input
           type='text'
           placeholder='Email'
