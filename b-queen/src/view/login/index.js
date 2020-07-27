@@ -1,52 +1,79 @@
 import React, { useState } from 'react';
-import './login.css';
+import '../../view/login/login.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import { Link } from 'react-router-dom';
-//import './LogoBQ.png';
+import logo from '../../img/logo.png';
+import Button from '../../components/Button/index';
+import Input from '../../components/Input/index';
+import authErrors from '../../config/firebase-error';
 
 
-function Login() {
+function Login(props) {
   //variável de estado = nome do valor, função que atualiza esse valor = (início)
   const [email, setEmail] = useState();
-  const [senha, setSenha] = useState();
+  const [password, setPassword] = useState();
+  let [errorMsg, setErrorMsg] = useState();
 
-  const [msgTipo, setMsgTipo] = useState();
+  function signIn() {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(result => {
+        alert("LOGADO")
+      }).catch(function (error) {
+        if (authErrors[error.code]) {
+          setErrorMsg(authErrors[error.code])
+        } else {
+          setErrorMsg('Tente novamente!')
+        }
+      })
+  };
 
-  function logar() {
-
-    firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
-
-
-    }).catch(erro => {
-
-
-    })
+  //chamada do login
+  const loginCall = (e) => {
+    e.preventDefault();
+    signIn(email, password);
   }
 
   return (
-    <div className='login-content d-flex '>
-
+    <div className='login-content d-flex'>
 
       <form className="form-signin mx-auto ">
-        <div className="text-center mb-4">
-          <img className="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
-        </div>
 
+        <img src={logo} class="img-fluid" alt='logo' />
 
-        <input onChange={(e) => setEmail(e.target.value)} type="email" id="inputEmail" className="form-control form-control-lg my-3" placeholder="Email" />
-        <input onChange={(e) => setSenha(e.target.value)} type="password" id="inputPassword" className="form-control form-control-lg my-3" placeholder="Senha" />
-
-
-        <button onClick={logar} className="btn btn-lg btn-block btn-login" type="button">Entrar</button>
-
+        <Input
+          type='text'
+          placeholder='Email'
+          onChange={
+            (e) => setEmail(e.target.value)
+          }
+        />
+        <Input
+          type='password'
+          placeholder='Senha'
+          onChange={
+            (e) => setPassword(e.target.value)
+          }
+        />
+        <Button
+          name='Entrar'
+          handleCLick={
+            (e) => loginCall(e)
+          }
+        />
+        {
+          errorMsg ? (
+            <div> {errorMsg}</div>
+          ) : ""
+        }
 
         <div className='nav-register mt-5 text-center'>
           <p className='mx-2'>Ainda não é cadastrado?
-    <Link to='register' className='mx-2'><u>Cadastre-se clicando aqui</u></Link>
+             <Link to='register' className='mx-2'><u>Cadastre-se clicando aqui</u></Link>
           </p>
         </div>
-
       </form>
     </div>
   )
