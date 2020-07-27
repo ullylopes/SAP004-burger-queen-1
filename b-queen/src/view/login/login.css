@@ -1,21 +1,21 @@
+*{
+    background-color: #F2B737;
+}
+
 .login-content {
-    width: 100%;
+    width: 100vw;
     padding: 15%;
     margin: auto;
-    background-color: #F2B737;
     height: 100vh;
     align-items: center;
 }
 
-.btn-login {
-    background-color: #F21D56;
-    color: #F2B737;
+.form-signin {
+    max-width: 650px;
 }
 
-.btn-login:hover {
-    background-color: #F2522E;
-    color: #ffffff;
-
+.nav-register{
+    color: #F21D56;
 }
 
 .nav-register a {
