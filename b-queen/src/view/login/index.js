@@ -20,7 +20,7 @@ function Login(props) {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(result => {
-        alert("LOGADO")
+        alert('LOGADO')
       }).catch(function (error) {
         if (authErrors[error.code]) {
           setErrorMsg(authErrors[error.code])
@@ -38,8 +38,8 @@ function Login(props) {
 
   return (
     <div className='login-content d-flex'>
-      <form className="form-signin mx-auto ">
-        <img src={logoCut} class="img-fluid" alt='logo' />
+      <form className='form-signin mx-auto '>
+        <img src={logoCut} class='img-fluid' alt='logo' />
         <Input
           type='text'
           placeholder='Email'
@@ -65,11 +65,12 @@ function Login(props) {
         {
           errorMsg ? (
             <div className='error-msg'> {errorMsg}</div>
-          ) : ""
+          ) : ''
         }
-        <div className='nav-register mt-5 text-center'>
+        <div className='nav-register mt-1 text-center'>
           <p className='mx-2'>Ainda não é cadastrado?
-             <Link to='register' className='mx-2'><u>Cadastre-se clicando aqui</u></Link>
+          <br />
+            <Link to='register' className='mx-2'><u>Cadastre-se clicando aqui</u></Link>
           </p>
         </div>
       </form>

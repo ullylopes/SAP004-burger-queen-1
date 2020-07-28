@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import history from './history';
+
 
 /*PAGINAS*/
 import Login from './view/login/index';
@@ -9,13 +11,13 @@ import Salon from '../src/view/salon';
 
 function App() {
   return (
-    <Router>
-
-      <Route exact path='/login' component={Login} />
-      <Route exact path='/register' component={Register} />
-      <Route exact path='/salon' component={Salon} />
-      {/*<Route exact path='/kitchen' component={Kitchen}*/}
-
+    <Router history={history}>
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
+        <Route path='/salon' component={Salon} />
+        {/*<Route path='/kitchen' component={Kitchen} />*/}
+      </Switch>
     </Router>
   );
 }
