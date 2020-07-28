@@ -23,7 +23,7 @@ const Register = () => {
     const registerFirebase = () => {     
             
             if(password !== confirmPassword){
-
+                
             }else{
                 firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
                     firebase.auth().currentUser

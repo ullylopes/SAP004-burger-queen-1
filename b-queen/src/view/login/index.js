@@ -67,8 +67,9 @@ function Login(props) {
             <div className='error-msg'> {errorMsg}</div>
           ) : ""
         }
-        <div className='nav-register mt-5 text-center'>
+        <div className='nav-register mt-1 text-center'>
           <p className='mx-2'>Ainda não é cadastrado?
+            <br/>
              <Link to='register' className='mx-2'><u>Cadastre-se clicando aqui</u></Link>
           </p>
         </div>
