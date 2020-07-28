@@ -16,6 +16,7 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/salon' component={Salon} />
+        <Route component={() => <div>Essa página não existe!</div>} />
         {/*<Route path='/kitchen' component={Kitchen} />*/}
       </Switch>
     </Router>

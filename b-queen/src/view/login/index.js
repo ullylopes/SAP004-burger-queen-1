@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import '../../view/login/login.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
+import 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import logoCut from '../../img/logo-cut.png';
 import Button from '../../components/Button/index';
 import Input from '../../components/Input/index';
 import authErrors from '../../config/firebase-error';
+import history from '../../history'
 
 
 function Login(props) {
@@ -19,8 +21,40 @@ function Login(props) {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(result => {
-        alert('LOGADO')
+      .then(() => {
+
+        firebase.firestore().collection('users').get().then((querySnapshot) => {
+          const emailArray = [];
+          querySnapshot.forEach((doc) => {
+            emailArray.push(doc.data().email);
+          });
+                             
+          const status = emailArray.indexOf(email);
+          
+          
+          if (status === -1) {    
+            alert("Usuário não cadastrado!")
+          }else{
+            
+            firebase.firestore().collection('users').where('email', '==', email)
+            .get()
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+
+                console.log(doc.data().local)
+                
+                if (doc.data().local == 'salao') {
+                  history.push('/salon')
+                }else{
+                  history.push('/login')
+                }               
+
+              })
+            })
+            
+          }                    
+        })        
+
       }).catch(function (error) {
         if (authErrors[error.code]) {
           setErrorMsg(authErrors[error.code])
@@ -79,3 +113,6 @@ function Login(props) {
 }
 
 export default Login;
+
+//-----------------------
+

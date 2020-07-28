@@ -5,6 +5,7 @@ import 'firebase/auth';
 import Input from '../../components/Input'
 import { Link } from 'react-router-dom';
 import history from '../../history'
+import 'firebase/firestore';
 
 const Register = () => {
 
@@ -35,52 +36,48 @@ const Register = () => {
             .currentUser
             .updateProfile({ displayName: name })
 
-          firebase
+            firebase
             .firestore()
             .collection('users')
             .get()
-            .then((querySnapshot) => {
-              const emailArray = [];
-              querySnapshot.forEach((doc) => {
-                emailArray.push(doc.data().email);
-              })
-
-              const booleanEmail = [];
-              for (let value of emailArray) {
-                booleanEmail.push(value === email);
-              }
-
-              const status = booleanEmail.indexOf(true);
-              if (status === -1) {
-                firebase.firestore().collection('users').doc().set({
-                  uid: firebase.auth().currentUser.uid,
-                  email: email,
-                  name: name,
-                  local: radioLocal
+              .then((querySnapshot) => {
+                const emailArray = [];
+                querySnapshot.forEach((doc) => {
+                  emailArray.push(doc.data().email);
                 })
 
-                alert('Cadastro Efetuado!')
-
-                if (radioLocal === 'salao') {
-                  history.push('/salon')
-                } else if (radioLocal === 'cozinha') {
-                  history.push('/login')
+                const booleanEmail = [];
+                for (let value of emailArray) {
+                  booleanEmail.push(value === email);
                 }
 
-              }
-            })
-        }).catch(error => {
-          setErrorMessage('error')
-          alert('Houve um erro ao cadastrar!')
-        })
+                const status = booleanEmail.indexOf(true);
+                if (status === -1) {
+                  firebase.firestore().collection('users').doc().set({
+                    uid: firebase.auth().currentUser.uid,
+                    email: email,
+                    name: name,
+                    local: radioLocal
+                  })
+                  
+                  if (radioLocal === 'salao') {
+                    history.push('/salon')
+                  } else if (radioLocal === 'cozinha') {
+                    history.push('/login')
+                  }
+
+                }
+              })
+              }).catch(error => {
+                setErrorMessage('error')
+                alert('Houve um erro ao cadastrar!')
+              })
     }
   }
 
   return (
     <div className='register-content d-flex'>
-
       <div className='form-register d-flex'>
-
         <form className='mx-auto text-center'>
           <p className='edit-text-color' id='register-title'>Cadastro</p>
           <div className='for-border'>
