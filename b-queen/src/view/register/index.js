@@ -14,18 +14,19 @@ const Register = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [radioLocal, setRadioLocal] = useState('salao');
-
   const [errorType, setErrorType] = useState();
   const [errorMessage, setErrorMessage] = useState();
+  const [loading, setLoading] = useState();
 
   useEffect(() => {
     console.log(radioLocal)
   }, [radioLocal])
 
   const registerFirebase = () => {
+    setLoading(1)
     setErrorType(null)
     if (password !== confirmPassword) {
-
+      setLoading(0)
       setErrorType('error')
       setErrorMessage('As senhas nos campos "Senha" e "Confirmar Senha" são diferentes!')
 
@@ -34,6 +35,7 @@ const Register = () => {
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then(() => {
+          setLoading(0)
           firebase
             .auth()
             .currentUser
@@ -71,7 +73,8 @@ const Register = () => {
 
                 }
               })
-              }).catch(error => {
+        }).catch(error => {
+          setLoading(0)
                 setErrorType('error')  
                 switch(error.message){
                   case 'Password should be at least 6 characters':
@@ -87,7 +90,7 @@ const Register = () => {
                     setErrorMessage('Não foi possível cadastrar. Tente novamente mais tarde!');
                     break;
                   }
-              })
+        })
     }
   }
 
@@ -119,10 +122,15 @@ const Register = () => {
             <br />
           </div>
 
+          {
+            loading ? <div class="spinner-border text-warning spinner-register" role="status"><span class="sr-only">Loading...</span></div>
+            : <button onClick={registerFirebase} className='btn btn-register-page edit-text-color' type='button'>Cadastrar</button>
+          }      
+
           <Link to='login'>
             <button className='btn btn-register-page edit-text-color' type='button'>Cancelar</button>
           </Link>
-          <button onClick={registerFirebase} className='btn btn-register-page edit-text-color' type='button'>Cadastrar</button>
+          
         </form>
       </div>
       {errorType === 'error' && <div className='error-msg-register'><strong>Atenção!</strong> {errorMessage}</div>}

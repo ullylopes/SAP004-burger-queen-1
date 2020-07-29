@@ -19,11 +19,17 @@
     margin-right: 4%;
     margin-top: 5%;  
     transition: 1s;
+    display: inline;
 }
 
 .btn-register-page:hover{
     background-color: #F2B737;
     color: #f21d57;
+}
+
+.spinner-register{
+    display: block;
+    margin: auto;
 }
 
 .edit-text-color{
@@ -38,6 +44,7 @@
     border-bottom:3px solid #F2B737;
     border-top: 3px solid #F2B737;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .error-msg-register{
