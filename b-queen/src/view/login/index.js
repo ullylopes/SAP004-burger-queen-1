@@ -17,53 +17,64 @@ function Login(props) {
   const [password, setPassword] = useState();
   let [errorMsg, setErrorMsg] = useState();
 
+
+  //const authSignIn = e => {
+  //  e.preventDefault()
+
+
   function signIn() {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+        firebase
+          .firestore()
+          .collection('users')
+          .get()
+          .then((querySnapshot) => {
+            const emailArray = [];
+            querySnapshot
+              .forEach((doc) => {
+                emailArray
+                  .push(doc.data()
+                    .email);
+              });
 
-        firebase.firestore().collection('users').get().then((querySnapshot) => {
-          const emailArray = [];
-          querySnapshot.forEach((doc) => {
-            emailArray.push(doc.data().email);
-          });
-                             
-          const status = emailArray.indexOf(email);
-          
-          
-          if (status === -1) {    
-            alert("Usuário não cadastrado!")
-          }else{
-            
-            firebase.firestore().collection('users').where('email', '==', email)
-            .get()
-            .then((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
+            const status = emailArray.indexOf(email);
 
-                console.log(doc.data().local)
-                
-                if (doc.data().local == 'salao') {
-                  history.push('/salon')
-                }else{
-                  history.push('/login')
-                }               
 
-              })
-            })
-            
-          }                    
-        })        
+            if (status === -1) {
+              alert("Usuário não cadastrado!")
+            } else {
 
+              firebase
+                .firestore()
+                .collection('users')
+                .where('email', '==', email)
+                .get()
+                .then((querySnapshot) => {
+                  querySnapshot.forEach((doc) => {
+
+                    console.log(doc.data().local)
+
+                    if (doc.data().local === 'salao') {
+                      history.push('/salon')
+                    } else {
+                      history.push('/login')
+                    }
+                  })
+                })
+            }
+          })
       }).catch(function (error) {
         if (authErrors[error.code]) {
           setErrorMsg(authErrors[error.code])
         } else {
           setErrorMsg('Tente novamente!')
+          return
         }
       })
   };
-
   //chamada do login
   const loginCall = (e) => {
     e.preventDefault();
@@ -90,6 +101,7 @@ function Login(props) {
         />
         <Button
           name='Entrar'
+          className='btn btn-lg btn-block'
           handleClick={
             (e) => {
               loginCall(e)
@@ -114,5 +126,4 @@ function Login(props) {
 
 export default Login;
 
-//-----------------------
 

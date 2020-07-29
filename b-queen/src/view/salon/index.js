@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import './salon.css';
 import { Link } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
 
 function Salon() {
     return (
-        <Navbar />
+
+        <div className='salon-content'>
+            <form className='form-salon'>
+                <Header />
+            </form>
+        </div>
+
+
     )
 }
 

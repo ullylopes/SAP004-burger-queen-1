@@ -1,0 +1,14 @@
+.header-content {
+    border-bottom: 2px solid #F21D56;
+}
+
+.btn-header {
+    margin: 1%;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.mini-logo {
+    max-width: 8%;
+}
+
