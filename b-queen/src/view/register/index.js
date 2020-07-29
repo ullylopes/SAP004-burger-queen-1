@@ -23,8 +23,11 @@ const Register = () => {
   }, [radioLocal])
 
   const registerFirebase = () => {
-
+    setErrorType(null)
     if (password !== confirmPassword) {
+
+      setErrorType('error')
+      setErrorMessage('As senhas nos campos "Senha" e "Confirmar Senha" são diferentes!')
 
     } else {
       firebase
@@ -69,15 +72,28 @@ const Register = () => {
                 }
               })
               }).catch(error => {
-                setErrorMessage('error')
-                alert('Houve um erro ao cadastrar!')
+                setErrorType('error')  
+                switch(error.message){
+                  case 'Password should be at least 6 characters':
+                    setErrorMessage('A senha deve ter pelo menos 6 caracteres!');
+                    break;
+                  case 'The email address is already in use by another account.':
+                    setErrorMessage('Este email já está sendo utilizado por outro usuário!');
+                    break;
+                  case 'The email address is badly formatted.':
+                    setErrorMessage('Esse email é inválido!');
+                    break;
+                  default: 
+                    setErrorMessage('Não foi possível cadastrar. Tente novamente mais tarde!');
+                    break;
+                  }
               })
     }
   }
 
   return (
     <div className='register-content d-flex'>
-      <div className='form-register d-flex'>
+      <div className='form-register'>
         <form className='mx-auto text-center'>
           <p className='edit-text-color' id='register-title'>Cadastro</p>
           <div className='for-border'>
@@ -107,9 +123,9 @@ const Register = () => {
             <button className='btn btn-register-page edit-text-color' type='button'>Cancelar</button>
           </Link>
           <button onClick={registerFirebase} className='btn btn-register-page edit-text-color' type='button'>Cadastrar</button>
-
         </form>
       </div>
+      {errorType === 'error' && <div className='error-msg-register'><strong>Atenção!</strong> {errorMessage}</div>}
     </div>
   )
 }

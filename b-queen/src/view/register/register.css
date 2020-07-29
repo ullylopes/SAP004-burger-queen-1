@@ -40,3 +40,15 @@
     border-radius: 5px;
 }
 
+.error-msg-register{
+    font-size: medium;
+    text-align: center;
+    color: #F21D56;
+    border-radius: 8px;
+    margin-top: 3%;
+    border: 2px solid #F21D56;
+    padding: 2%;
+    background-color: #f7d7d6;
+    width: 320px;
+}
+
