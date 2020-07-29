@@ -53,9 +53,18 @@
     color: #F21D56;
     border-radius: 8px;
     margin-top: 3%;
-    border: 2px solid #F21D56;
+    margin-bottom: 3%;
+    border: 2px solid #F2B737;
     padding: 2%;
     background-color: #f7d7d6;
     width: 320px;
 }
 
+@media screen and (max-height: 700px) {
+
+    .register-content{
+        height: 100%;
+    }
+
+
+}
