@@ -23,6 +23,10 @@ const Register = () => {
   }, [radioLocal])
 
   const registerFirebase = () => {
+
+    //alert(window.screen.width) 1366
+    //alert(window.screen.height)768
+
     setLoading(1)
     setErrorType(null)
     if (password !== confirmPassword) {
@@ -95,7 +99,7 @@ const Register = () => {
   }
 
   return (
-    <div className='register-content d-flex'>
+    <div className='register-content d-flex flex-column'>
       <div className='form-register'>
         <form className='mx-auto text-center'>
           <p className='edit-text-color' id='register-title'>Cadastro</p>
@@ -122,6 +126,8 @@ const Register = () => {
             <br />
           </div>
 
+          {errorType === 'error' && <div className='error-msg-register'><strong>Atenção!</strong> {errorMessage}</div>}
+
           {
             loading ? <div class="spinner-border text-warning spinner-register" role="status"><span class="sr-only">Loading...</span></div>
               : <button onClick={registerFirebase} className='btn btn-register-page edit-text-color' type='button'>Cadastrar</button>
@@ -133,7 +139,7 @@ const Register = () => {
 
         </form>
       </div>
-      {errorType === 'error' && <div className='error-msg-register'><strong>Atenção!</strong> {errorMessage}</div>}
+      
     </div>
   )
 }
