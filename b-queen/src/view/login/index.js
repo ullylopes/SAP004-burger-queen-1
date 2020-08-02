@@ -46,7 +46,7 @@ function Login(props) {
                 if (doc.data().local == 'salao') {
                   history.push('/salon')
                 }else{
-                  history.push('/login')
+                  history.push('/kitchen')
                 }               
 
               })

@@ -72,7 +72,7 @@ const Register = () => {
                   if (radioLocal === 'salao') {
                     history.push('/salon')
                   } else if (radioLocal === 'cozinha') {
-                    history.push('/login')
+                    history.push('/kitchen')
                   }
 
                 }
