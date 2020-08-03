@@ -40,14 +40,12 @@ function Login(props) {
             .get()
             .then((querySnapshot) => {
               querySnapshot.forEach((doc) => {
-
-                console.log(doc.data().local)
                 
                 if (doc.data().local == 'salao') {
                   history.push('/salon')
                 }else{
                   history.push('/kitchen')
-                }               
+                }             
 
               })
             })
