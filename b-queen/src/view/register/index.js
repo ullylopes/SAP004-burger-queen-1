@@ -45,55 +45,55 @@ const Register = () => {
             .currentUser
             .updateProfile({ displayName: name })
 
-            firebase
+          firebase
             .firestore()
             .collection('users')
             .get()
-              .then((querySnapshot) => {
-                const emailArray = [];
-                querySnapshot.forEach((doc) => {
-                  emailArray.push(doc.data().email);
+            .then((querySnapshot) => {
+              const emailArray = [];
+              querySnapshot.forEach((doc) => {
+                emailArray.push(doc.data().email);
+              })
+
+              const booleanEmail = [];
+              for (let value of emailArray) {
+                booleanEmail.push(value === email);
+              }
+
+              const status = booleanEmail.indexOf(true);
+              if (status === -1) {
+                firebase.firestore().collection('users').doc().set({
+                  uid: firebase.auth().currentUser.uid,
+                  email: email,
+                  name: name,
+                  local: radioLocal
                 })
 
-                const booleanEmail = [];
-                for (let value of emailArray) {
-                  booleanEmail.push(value === email);
+                if (radioLocal === 'salao') {
+                  history.push('/salon')
+                } else if (radioLocal === 'cozinha') {
+                  history.push('/kitchen')
                 }
 
-                const status = booleanEmail.indexOf(true);
-                if (status === -1) {
-                  firebase.firestore().collection('users').doc().set({
-                    uid: firebase.auth().currentUser.uid,
-                    email: email,
-                    name: name,
-                    local: radioLocal
-                  })
-                  
-                  if (radioLocal === 'salao') {
-                    history.push('/salon')
-                  } else if (radioLocal === 'cozinha') {
-                    history.push('/kitchen')
-                  }
-
-                }
-              })
+              }
+            })
         }).catch(error => {
           setLoading(0)
-                setErrorType('error')  
-                switch(error.message){
-                  case 'Password should be at least 6 characters':
-                    setErrorMessage('A senha deve ter pelo menos 6 caracteres!');
-                    break;
-                  case 'The email address is already in use by another account.':
-                    setErrorMessage('Este email já está sendo utilizado por outro usuário!');
-                    break;
-                  case 'The email address is badly formatted.':
-                    setErrorMessage('Esse email é inválido!');
-                    break;
-                  default: 
-                    setErrorMessage('Não foi possível cadastrar. Tente novamente mais tarde!');
-                    break;
-                  }
+          setErrorType('error')
+          switch (error.message) {
+            case 'Password should be at least 6 characters':
+              setErrorMessage('A senha deve ter pelo menos 6 caracteres!');
+              break;
+            case 'The email address is already in use by another account.':
+              setErrorMessage('Este email já está sendo utilizado por outro usuário!');
+              break;
+            case 'The email address is badly formatted.':
+              setErrorMessage('Esse email é inválido!');
+              break;
+            default:
+              setErrorMessage('Não foi possível cadastrar. Tente novamente mais tarde!');
+              break;
+          }
         })
     }
   }
@@ -130,15 +130,15 @@ const Register = () => {
 
           {
             loading ? <div class="spinner-border text-warning spinner-register" role="status"><span class="sr-only">Loading...</span></div>
-            : <button onClick={registerFirebase} className='btn btn-register-page edit-text-color' type='button'>Cadastrar</button>
-          }      
+              : <button onClick={registerFirebase} className='btn btn-register-page edit-text-color' type='button'>Cadastrar</button>
+          }
 
           <Link to='login'>
             <button className='btn btn-register-page edit-text-color' type='button'>Cancelar</button>
           </Link>
-          
+
         </form>
-      </div>      
+      </div>
     </div>
   )
 }
