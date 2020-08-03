@@ -45,7 +45,6 @@ function Login(props) {
             if (status === -1) {
               alert("Usuário não cadastrado!")
             } else {
-
               firebase
                 .firestore()
                 .collection('users')
@@ -59,7 +58,7 @@ function Login(props) {
                     if (doc.data().local === 'salao') {
                       history.push('/salon')
                     } else {
-                      history.push('/login')
+                      history.push('/kitchen')
                     }
                   })
                 })

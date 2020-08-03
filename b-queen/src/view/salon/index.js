@@ -9,7 +9,10 @@ function Salon() {
   return (
     <div className='salon-content'>
       <section>
-        <Header />
+        <Header
+          name1='Fazer pedido'
+          name2='Pedidos prontos'
+        />
       </section>
 
       <section className='form-salon row'>
