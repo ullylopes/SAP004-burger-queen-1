@@ -7,6 +7,7 @@ import history from './history';
 import Login from './view/login/index';
 import Register from './view/register/index';
 import Salon from '../src/view/salon';
+import Kitchen from '../src/view/kitchen'
 //import Kitchen from '../src/view/kitchen';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/salon' component={Salon} />
+        <Route path='/kitchen' component={Kitchen} />
         <Route component={() => <div>Essa página não existe!</div>} />
         {/*<Route path='/kitchen' component={Kitchen} />*/}
       </Switch>
