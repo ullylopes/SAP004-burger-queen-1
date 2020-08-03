@@ -21,7 +21,6 @@ function Login(props) {
   //const authSignIn = e => {
   //  e.preventDefault()
 
-
   function signIn() {
     firebase
       .auth()
@@ -101,7 +100,7 @@ function Login(props) {
         />
         <Button
           name='Entrar'
-          className='btn btn-lg btn-block'
+          className='btn btn-login btn-lg btn-block'
           handleClick={
             (e) => {
               loginCall(e)

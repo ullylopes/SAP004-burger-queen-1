@@ -3,6 +3,11 @@ import './header.css';
 import { Link } from 'react-router-dom';
 import minilogocut from '../../img/mini-logo-cut.png';
 import Button from '../Button';
+import LogOut from '../../view/login/logout';
+//import firebase from '../../config/firebase';
+import 'firebase/auth';
+import 'firebase/firestore';
+import history from '../../history';
 
 function Header() {
     return (
@@ -22,6 +27,7 @@ function Header() {
                 type="button"
                 className="btn btn-header"
                 name='Sair ⇲'
+                onClick={LogOut}
             />
             <Link to='login'></Link>
         </div >
