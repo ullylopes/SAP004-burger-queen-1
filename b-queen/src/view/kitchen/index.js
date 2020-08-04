@@ -32,13 +32,12 @@ const Kitchen = () => {
                     />
 
                     <Card
-                            tableNumber='5'
+                            tableNumber='4'
                             buttonTitle='PRONTO PARA SERVIR'
                             client='Zaine'
                             worker='Amanda'
                     />
-                    
-                    
+                                                                              
                 </div>
             
         </div>
