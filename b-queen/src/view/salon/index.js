@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import Items from '../../components/Items';
 
 function Salon() {
   return (
@@ -38,6 +39,8 @@ function Salon() {
           name='Restante do dia'
           className='btn btn-lg select-menu-bttn col-sm-2' />
       </section>
+
+      <Items />
 
 
       {/*<div className='description col-sm-2'>
