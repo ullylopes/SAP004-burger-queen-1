@@ -6,12 +6,15 @@
     border-radius: 8px;
     border-color: #F7D7D6;
     border: solid 2px;
-    margin: auto;
     position:relative;   
     padding-top: 2%;
     margin-bottom: 2%;
+    display: inline-block;
     
-    
+        
+    /*display: inline-table; 
+    display: inline-block;
+    */
 }
 
 .view-orders{
