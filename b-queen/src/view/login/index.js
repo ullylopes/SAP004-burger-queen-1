@@ -10,6 +10,7 @@ import Button from '../../components/Button/index';
 import Input from '../../components/Input/index';
 import authErrors from '../../config/firebase-error';
 import history from '../../history'
+import { useDispatch } from 'react-redux'
 
 
 function Login(props) {
@@ -18,15 +19,14 @@ function Login(props) {
   const [password, setPassword] = useState();
   let [errorMsg, setErrorMsg] = useState();
 
-
-  //const authSignIn = e => {
-  //  e.preventDefault()
+  const dispatch = useDispatch();
 
   function signIn() {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+        dispatch({ type: 'LOG_IN', userEmail: email })
         firebase
           .firestore()
           .collection('users')
@@ -42,7 +42,6 @@ function Login(props) {
 
             const status = emailArray.indexOf(email);
 
-
             if (status === -1) {
               alert("Usuário não cadastrado!")
             } else {
@@ -53,7 +52,6 @@ function Login(props) {
                 .get()
                 .then((querySnapshot) => {
                   querySnapshot.forEach((doc) => {
-
                     if (doc.data().local === 'salao') {
                       history.push('/salon')
                     } else {
@@ -89,7 +87,7 @@ function Login(props) {
             (e) => setEmail(e.target.value)
           }
         />
-        <Input className='form-control form-control-lg my-3 form-login'
+        <Input
           type='password'
           placeholder='Senha'
           onChange={

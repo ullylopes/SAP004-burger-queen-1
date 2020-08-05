@@ -5,7 +5,42 @@
     height: 100vh;
     /*align-items: center;*/
 }
-.select-menu-bttn{
+
+.content-both-sides {
+    margin: 0;
+}
+
+.content-on-the-left {
+    border-right: 2px solid #F21D56;
+}
+
+.input {
+    width: 200px;
+}
+
+
+.select-menu-bttn {
     background-color: #F29435;
-    color: #ffffff;
+    color           : #ffffff;
+    height          : 100px;
+
+}
+
+.content-on-the-right {
+    /*margin         : 3%;
+    max-width      : 40%;
+    justify-content: flex-end;
+    flex-direction : column;*/
+
+}
+
+.customer-info-box {
+    border-radius     : 8px;
+    /*max-width       : 218px;*/
+    height            : 87px;
+    left              : 10px;
+    padding           : 10px;
+    background-color  : #F2522E;
+
+
 }
