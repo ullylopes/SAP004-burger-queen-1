@@ -1,19 +1,20 @@
 //import React from 'react';
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
-import history from '../../history'
+
 
 const LogOut = () => {
-    firebase
-        .auth()
-        .signOut()
-        .then(() => {
-            history.push('/login')
-        }).catch(error => {
-            console.log('NÃO DEU CERTO')
-        });
-}
+    return (
+        firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                alert('Volte Sempre')
+            })
+    )
+};
 
-export default withRouter(LogOut);
+export default LogOut;
+

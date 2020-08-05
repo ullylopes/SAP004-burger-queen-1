@@ -1,0 +1,16 @@
+.basic-structure{
+    height: 430px;
+    width: 300px;
+    background-color: #F2522E;
+    color: #F7D7D6;
+    border-radius: 8px;
+    margin: auto;
+}
+
+.view-orders{
+    height: auto;
+    width: 280px;
+    background-color: #F7D7D6;
+    color: #F2522E;
+    border-radius: 8px;
+}

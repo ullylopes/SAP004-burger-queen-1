@@ -86,7 +86,7 @@ function Login(props) {
             (e) => setEmail(e.target.value)
           }
         />
-        <Input className='form-control form-control-lg my-3 form-login'
+        <Input
           type='password'
           placeholder='Senha'
           onChange={

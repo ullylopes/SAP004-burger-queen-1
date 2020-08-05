@@ -1,3 +1,16 @@
-.classCard {
-    background-color: tomato;
+.item-content {
+    border-radius: 8px;
+    max-width    : 400px;
+    height       : 104px;
+    left         : 10px;
+    padding      : 10px;
+    /*margin     : 10px;
+margin-left      : 2%;*/
+    background   : #FFD373;
+    box-shadow   : 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn-add-item {
+    background-color: #F21D56;
+    color           : #FFD373;
 }
