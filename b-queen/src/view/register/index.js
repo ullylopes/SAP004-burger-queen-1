@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './register.css';
+import '../../reset.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Input from '../../components/Input'
@@ -102,7 +103,7 @@ const Register = () => {
     <div className='register-content d-flex flex-column'>
       <div className='form-register'>
         <form className='mx-auto text-center'>
-          <p className='edit-text-color' id='register-title'>Cadastro</p>
+          <h1 className='edit-text-color' id='register-title'>Cadastro</h1>
           <div className='for-border'>
 
             <Input onChange={(e) => setName(e.target.value)} type='text' placeholder='Nome' />

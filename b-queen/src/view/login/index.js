@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../../view/login/login.css';
+import '../../reset.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import 'firebase/firestore';

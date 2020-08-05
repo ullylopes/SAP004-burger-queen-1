@@ -1,7 +1,6 @@
 .register-content{
     height: 100vh;
     margin: auto;
-    background-color: #F2B737;
     align-items: center;
 }
 
@@ -37,7 +36,7 @@
 }
 
 #register-title{
-    font-size: xx-large;
+    font-family: 'VT323', monospace;
 }
 
 .for-border{

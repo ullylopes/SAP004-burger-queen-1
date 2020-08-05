@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './kitchen.css';
+import '../../reset.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Input from '../../components/Input'
@@ -21,9 +22,9 @@ const Kitchen = () => {
                     name1='Em Andamento'
                     name2='Pedidos Concluídos'
                 />
-                <h3 className="for-title">PEDIDOS EM ANDAMENTO</h3>
+                <h1 className="for-title">Pedidos em Andamento</h1>
 
-                <div className="d-flex ">
+                <div className="container">
                     <Card
                             tableNumber='4'
                             buttonTitle='PRONTO PARA SERVIR'
@@ -32,13 +33,53 @@ const Kitchen = () => {
                     />
 
                     <Card
-                            tableNumber='5'
+                            tableNumber='4'
                             buttonTitle='PRONTO PARA SERVIR'
                             client='Zaine'
                             worker='Amanda'
                     />
-                    
-                    
+
+                    <Card
+                            tableNumber='4'
+                            buttonTitle='PRONTO PARA SERVIR'
+                            client='Zaine'
+                            worker='Amanda'
+                    />
+
+                    <Card
+                            tableNumber='4'
+                            buttonTitle='PRONTO PARA SERVIR'
+                            client='Zaine'
+                            worker='Amanda'
+                    />
+
+                    <Card
+                            tableNumber='4'
+                            buttonTitle='PRONTO PARA SERVIR'
+                            client='Zaine'
+                            worker='Amanda'
+                    />
+
+                    <Card
+                            tableNumber='4'
+                            buttonTitle='PRONTO PARA SERVIR'
+                            client='Zaine'
+                            worker='Amanda'
+                    />
+
+                    <Card
+                            tableNumber='4'
+                            buttonTitle='PRONTO PARA SERVIR'
+                            client='Zaine'
+                            worker='Amanda'
+                    />   
+
+                    <Card
+                            tableNumber='4'
+                            buttonTitle='PRONTO PARA SERVIR'
+                            client='Zaine'
+                            worker='Amanda'
+                    />                                                 
                 </div>
             
         </div>
