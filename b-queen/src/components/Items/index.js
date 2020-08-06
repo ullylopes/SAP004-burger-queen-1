@@ -6,36 +6,35 @@ const Items = (props) => {
     return (
 
         <div className='item-content my-sm-3'>
+            <div className=' d-flex justify-content-between mt-2'>
+                <span> NOME DO ITEM{props.item_name} </span>
+                <span> R${props.price} </span>
+            </div>
 
-            <span> NOME DO ITEM{props.item_name} </span>
-            <span> R${props.price} </span>
+            <div className="container-options-price d-flex justify-content-between mt-2">
+                <select id={props.idOptions} className="options">
+                    <option value="default" selected disabled id={props.flavors}>Opções</option>
+                    <option id={props.idSabores}>{props.flavors}</option>
+                    <option id={props.idSabores}>{props.flavors}</option>
+                    <option id={props.idSabores}>{props.flavors}</option>
+                    <option id={props.idSabores}>{props.flavors}</option>
+                </select>
+                <Button
+                    name='Adicionar'
+                    className='btn btn-add-item btn-sm my-sm-2 ml-sm-3 flex-row-reverse'
+                />
+            </div>
 
-            <Button
-                name='Adicionar'
-                className='btn btn-add-item btn-sm my-sm-2 ml-sm-3 '
-            />
+        </div >
 
-        </div>
-        //<div id={props.idCard} className="classCard">
-        //    <div className="container-icon-item">
-        //        <figure className="container-icons">
-        //            <img id={props.imgId} alt="icon-item"></img>
-        //        </figure>
-        //        <span className="class-item">{props.item_name}</span>
-        //    </div>
 
-        //    <div className="container-options-price">
-        //        <select id={props.idOptions} className="options">
-        //            <option value="default" selected disabled id={props.flavors}>Opções</option>
-        //            <option id={props.idSabores}>{props.flavors}</option>
-        //            <option id={props.idSabores}>{props.flavors}</option>
-        //            <option id={props.idSabores}>{props.flavors}</option>
-        //            <option id={props.idSabores}>{props.flavors}</option>
-        //        </select>
-        //        <span className="price">R${props.price}</span>
-        //    </div>
 
-        //</div>
+
+
+
+
+
+
     )
 };
 
