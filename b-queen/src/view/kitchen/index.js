@@ -10,10 +10,6 @@ import Card from '../../components/Card';
 
 const Kitchen = () => {
 
-	const directToKitchen = () => {history.push('/kitchen')}
-	
-	const directToHistoric = () => {history.push('/historic')}
-
     return(
         <div className="div-kitchen">
                 
