@@ -2,86 +2,88 @@ import React, { useState, useEffect } from 'react';
 import './kitchen.css';
 import '../../reset.css';
 import firebase from '../../config/firebase';
-import 'firebase/auth';
-import Input from '../../components/Input'
 import { Link } from 'react-router-dom';
-import history from '../../history'
+import history from '../../history';
 import 'firebase/firestore';
 import Header from '../../components/Header';
-import Button from '../../components/Button';
 import Card from '../../components/Card';
 
 const Kitchen = () => {
 
-
+	const directToKitchen = () => {history.push('/kitchen')}
+	
+	const directToHistoric = () => {history.push('/historic')}
 
     return(
         <div className="div-kitchen">
-            
-                <Header
-                    name1='Em Andamento'
-                    name2='Pedidos Concluídos'
-                />
-                <h1 className="for-title">Pedidos em Andamento</h1>
+                
+            <Header
+                name1='Em Andamento'
+            	name2='Histórico de Pedidos'
 
-                <div className="container">
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />
+                butClick1={() => history.push('/kitchen')}
+                butClick2={() => history.push('/historic')}
+            />
+            <h1 className="for-title">Pedidos em Andamento</h1>
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />
+            <div className="container">
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />   
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />
 
-                    <Card
-                            tableNumber='4'
-                            buttonTitle='PRONTO PARA SERVIR'
-                            client='Zaine'
-                            worker='Amanda'
-                    />                                                 
-                </div>
-            
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />   
+
+                        <Card
+                                tableNumber='4'
+                                buttonTitle='PRONTO PARA SERVIR'
+                                client='Zaine'
+                                worker='Amanda'
+                        />                                                 
+            	</div>
+                
         </div>
     )
 

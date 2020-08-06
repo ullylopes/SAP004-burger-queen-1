@@ -9,8 +9,8 @@ import logoCut from '../../img/logo-cut.png';
 import Button from '../../components/Button/index';
 import Input from '../../components/Input/index';
 import authErrors from '../../config/firebase-error';
-import history from '../../history'
-import { useDispatch } from 'react-redux'
+import history from '../../history';
+import { useDispatch } from 'react-redux';
 
 
 function Login(props) {

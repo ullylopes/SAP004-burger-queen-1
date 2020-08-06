@@ -3,7 +3,7 @@
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
-
+import history from '../../history';
 
 const LogOut = () => {
     return (
@@ -11,7 +11,7 @@ const LogOut = () => {
             .auth()
             .signOut()
             .then(() => {
-                alert('Volte Sempre')
+                history.push('/login')
             })
     )
 };

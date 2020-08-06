@@ -7,9 +7,9 @@ import store from '../src/store/';
 import Login from './view/login/index';
 import Register from './view/register/index';
 import Salon from '../src/view/salon';
-import Kitchen from '../src/view/kitchen'
+import Kitchen from '../src/view/kitchen';
+import Historic from '../src/view/historic';
 import { Provider } from 'react-redux';
-//import Kitchen from '../src/view/kitchen';
 
 function App() {
   return (
@@ -20,8 +20,9 @@ function App() {
           <Route path='/register' component={Register} />
           <Route path='/salon' component={Salon} />
           <Route path='/kitchen' component={Kitchen} />
+          <Route path='/historic' component={Historic} />
           <Route component={() => <div>Essa página não existe!</div>} />
-          {/*<Route path='/kitchen' component={Kitchen} />*/}
+          
         </Switch>
       </Router>
     </Provider>
