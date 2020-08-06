@@ -1,0 +1,42 @@
+.salon-content {
+    width        : 100vw;
+    /*padding    : 15%;
+    margin       : auto;*/
+    height       : 100vh;
+    /*align-items: center;*/
+}
+
+.content-both-sides {
+    margin: 0;
+}
+
+.content-on-the-left {
+    border-right: 2px solid #F21D56;
+}
+
+.input {
+    width: 200px;
+}
+
+
+.select-menu-bttn {
+    background-color: #F29435;
+    color           : #ffffff;
+    height          : 100px;
+
+}
+
+.content-on-the-right {}
+
+.customer-info-box {
+    border-radius   : 8px;
+    width           : 218px;
+    height          : 87px;
+    left            : 10px;
+    padding         : 10px;
+    background-color: #F2522E;
+}
+
+.items-list {
+    margin: px;
+}

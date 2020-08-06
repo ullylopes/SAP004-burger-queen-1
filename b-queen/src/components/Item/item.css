@@ -1,0 +1,26 @@
+.item-summary-list {
+    background   : #FFD373;
+    width        : 220px;
+    height       : 58px;
+    border-radius: 8px;
+
+}
+
+.btn-quantity {
+    border-radius: 4px;
+    border       : 1px solid #F2522E;
+    font-weight  : bold;
+}
+
+.counter {
+    border-radius: 2px;
+    border       : 1px solid black;
+    background   : white;
+    margin       : 1%;
+    padding      : 1%;
+}
+
+.btn-send-to-kitchen {
+    font-weight: bold;
+
+}

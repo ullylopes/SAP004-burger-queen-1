@@ -5,12 +5,12 @@ const Input = (props) => {
     return (
         <input
             input type={props.type}
-            className='form-control form-control-lg my-3 form-login'
+            className={['form-control form-control-lg my-1', props.className].join(' ')}
+
             placeholder={props.placeholder}
             value={props.value}
-            onChange={props.onChange}>
-        </input>
+            onChange={props.onChange} >
+        </input >
     )
-
 };
 export default Input;
