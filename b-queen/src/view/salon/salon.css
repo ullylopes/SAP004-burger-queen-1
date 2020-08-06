@@ -1,8 +1,8 @@
 .salon-content {
-    width: 100vw;
-    /*padding: 15%;
-    margin: auto;*/
-    height: 100vh;
+    width        : 100vw;
+    /*padding    : 15%;
+    margin       : auto;*/
+    height       : 100vh;
     /*align-items: center;*/
 }
 
@@ -26,21 +26,17 @@
 
 }
 
-.content-on-the-right {
-    /*margin         : 3%;
-    max-width      : 40%;
-    justify-content: flex-end;
-    flex-direction : column;*/
-
-}
+.content-on-the-right {}
 
 .customer-info-box {
-    border-radius     : 8px;
-    /*max-width       : 218px;*/
-    height            : 87px;
-    left              : 10px;
-    padding           : 10px;
-    background-color  : #F2522E;
+    border-radius   : 8px;
+    width           : 218px;
+    height          : 87px;
+    left            : 10px;
+    padding         : 10px;
+    background-color: #F2522E;
+}
 
-
+.items-list {
+    margin: px;
 }
