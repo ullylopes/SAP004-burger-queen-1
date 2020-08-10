@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './items.css';
 import Button from '../Button';
 
-const Items = (props) => {
+const Items = ({ key, name, price, options, props }) => {
     return (
 
         <div className='item-content my-sm-3'>
-            <div className=' d-flex justify-content-between mt-2'>
-                <span> NOME DO ITEM{props.item_name} </span>
-                <span> R${props.price} </span>
+            <div className=' d-flex font-style-orange justify-content-between my-sm-2'>
+                <span>{name} </span>
+                <span>R${price} </span>
             </div>
 
-            <div className="container-options-price d-flex justify-content-between mt-2">
-                <select id={props.idOptions} className="options">
-                    <option value="default" selected disabled id={props.flavors}>Opções</option>
-                    <option id={props.idSabores}>{props.flavors}</option>
-                    <option id={props.idSabores}>{props.flavors}</option>
-                    <option id={props.idSabores}>{props.flavors}</option>
-                    <option id={props.idSabores}>{props.flavors}</option>
+            <div className="container-options-price d-flex justify-content-between">
+                <select className="options ">
+                    <option login="default" selected disabled id=''></option>
+
+
                 </select>
                 <Button
                     name='Adicionar'
