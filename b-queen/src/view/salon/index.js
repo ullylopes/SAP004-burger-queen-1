@@ -90,6 +90,9 @@ function Salon(props) {
   
   }
 
+  //console.log(setBreakfast);
+
+
   return (
     <div className='container-fluid'>
       <section>
