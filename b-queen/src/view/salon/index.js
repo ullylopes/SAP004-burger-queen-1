@@ -18,6 +18,7 @@ function Salon(props) {
   const [clientNameValue, setClientNameValue] = useState("");
   const [tableNumberValue, setTableNumberValue] = useState("");
   const [status, setStatus] = useState(true);
+  const [statusSendRequest, setStatusSendRequest] = useState("nulo");
   let menuAllDay = [];
   let menuBreakfast = [];
 
@@ -67,14 +68,32 @@ function Salon(props) {
   };  
 
   const sendRequest = () => {
-    alert("Pedido enviado!")
-    /*firebase.firestore().collection('orders-shipped').doc().set({
-      uid: firebase.auth().currentUser.uid,
-      clientName: clientNameValue,
-      tableNumber: tableNumberValue,
-      requests: []
-    })
-    */
+    
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              const attendantNameF = doc.data().name;
+  
+              firebase.firestore().collection('orders-shipped').doc().set({
+                  uid: firebase.auth().currentUser.uid,
+                  attendantName: attendantNameF,
+                  clientName: clientNameValue,
+                  tableNumber: tableNumberValue,
+                  requests: []
+                }, function(error) {
+                  if (error) {
+                    setStatusSendRequest("erroAoEnviar");
+                  } else {
+                    setStatusSendRequest("enviado"); 
+                  }
+                })
+            })
+          })
+      }
+    })    
   }
 
   return (
@@ -152,6 +171,9 @@ function Salon(props) {
               handleClick={sendRequest}
             />
           
+            { statusSendRequest == "enviado" ? <div class="alert alert-success" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Pedido enviado com <strong>SUCESSO</strong>!</div> : "" }
+            
+            { statusSendRequest == "erroAoEnviar" ? <div class="alert alert-warning" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Houve um <strong>ERRO</strong> ao enviar o pedido!</div> : "" }
         </div>
 
       </div>
