@@ -122,9 +122,9 @@ function Salon(props) {
           </section>
                                         
           { status ? 
-              <section className='items-list row mx-auto'><span className="font-style-orange mb-3">Menu Café Da Manhã</span>{/*breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)*/}</section> 
+            <section className='items-list row mx-auto'><h3 className="font-style-orange mb-3">Menu Café Da Manhã</h3>{/*breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)*/}<Items key="01" name="Chá M. Antonieta" price="1" /><Items key="01" name="Chá M. Antonieta" price="1" /><Items key="01" name="Chá M. Antonieta" price="1" /><Items key="01" name="Chá M. Antonieta" price="1" /></section> 
             :
-              <section className='items-list row mx-auto'><span className="font-style-orange mb-3">Menu All Day</span>{/*allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)*/}</section>            
+              <section className='items-list row mx-auto'><h3 className="font-style-orange mb-3">Menu All Day</h3>{/*allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)*/}<Items key="02" name="Burguer M. Antonieta" price="8" /></section>            
           }
         </div>
 

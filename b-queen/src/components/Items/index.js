@@ -5,7 +5,7 @@ import Button from '../Button';
 const Items = ({ key, name, price, options, props }) => {
     return (
 
-        <div className='item-content my-sm-3'>
+        <div className='item-content my-sm-3' data-key={key}>
             <div className='d-flex font-style-orange justify-content-between my-sm-2'>
                 <span>{name} </span>
                 <span>R${price} </span>
@@ -13,18 +13,14 @@ const Items = ({ key, name, price, options, props }) => {
 
             <div className="container-options-price d-flex justify-content-between">
                 <select className="options ">
-                    <option login="default" selected disabled id=''></option>
-
-
+                    <option selected disabled>Selecione</option>
                 </select>
                 <Button
-                    name='Adicionar'
+                    name='Incluir'
                     className='btn btn-add-item btn-sm my-sm-2 ml-sm-3 flex-row-reverse'
                 />
             </div>
-
         </div >
-
     )
 };
 
