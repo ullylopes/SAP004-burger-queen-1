@@ -66,4 +66,12 @@
     display: block;
 }
 
+.btn-send-to-kitchen {
+    font-weight: bold;
+    background-color: #F21D56;
+    color           : #FFD373;
+}
 
+.btn-send-to-kitchen:hover{
+    color           : #FFD373;
+}

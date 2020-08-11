@@ -67,12 +67,14 @@ function Salon(props) {
   };  
 
   const sendRequest = () => {
-    firebase.firestore().collection('orders-shipped').doc().set({
+    alert("Pedido enviado!")
+    /*firebase.firestore().collection('orders-shipped').doc().set({
       uid: firebase.auth().currentUser.uid,
       clientName: clientNameValue,
       tableNumber: tableNumberValue,
       requests: []
     })
+    */
   }
 
   return (
@@ -122,9 +124,9 @@ function Salon(props) {
           </section>
                                         
           { status ? 
-            <section className='items-list row mx-auto'><h3 className="font-style-orange mb-3">Menu Café Da Manhã</h3>{/*breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)*/}<Items key="01" name="Chá M. Antonieta" price="1" /><Items key="01" name="Chá M. Antonieta" price="1" /><Items key="01" name="Chá M. Antonieta" price="1" /><Items key="01" name="Chá M. Antonieta" price="1" /></section> 
+            <><h3 className="font-style-orange">Menu Café Da Manhã</h3><section className='items-list row mx-auto'>{breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)}</section></>
             :
-              <section className='items-list row mx-auto'><h3 className="font-style-orange mb-3">Menu All Day</h3>{/*allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)*/}<Items key="02" name="Burguer M. Antonieta" price="8" /></section>            
+            <><h3 className="font-style-orange">Menu All Day</h3><section className='items-list row mx-auto'>{allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)}</section></>           
           }
         </div>
 
@@ -146,15 +148,11 @@ function Salon(props) {
 
             <Button
               name='Enviar pedido para cozinha'
-              className='btn btn-add-item btn-send-to-kitchen btn-lg'
+              className='btn btn-send-to-kitchen btn-lg'
               handleClick={sendRequest}
             />
           
         </div>
-
-        {/*<div classNameName='description col-sm-2'>
-      <h2>MUNDO</h2>
-    </div>*/}
 
       </div>
     </div >
