@@ -72,10 +72,12 @@ function Salon(props) {
               }).then(function() {
                 setStatusSendRequest("enviado");
                 console.log("Document successfully written!");
+                setOrder([]);
               })
               .catch(function(error) {
                   setStatusSendRequest("erroAoEnviar");
                   console.error("Error writing document: ");
+                  setOrder([]);
               })
             })
             setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
