@@ -6,7 +6,7 @@ const Items = ({ key, name, price, options, props }) => {
     return (
 
         <div className='item-content my-sm-3'>
-            <div className=' d-flex font-style-orange justify-content-between my-sm-2'>
+            <div className='d-flex font-style-orange justify-content-between my-sm-2'>
                 <span>{name} </span>
                 <span>R${price} </span>
             </div>
@@ -24,14 +24,6 @@ const Items = ({ key, name, price, options, props }) => {
             </div>
 
         </div >
-
-
-
-
-
-
-
-
 
     )
 };
