@@ -43,11 +43,8 @@ function Salon(props) {
 
   useEffect(() => {
     firebaseRequisition('allday', menuAllDay, setAllDay)
-  });
-  
-  useEffect(() => {
     firebaseRequisition('breakfast', menuBreakfast, setBreakfast)
-  });
+  }, []);
 
   const showMenuAllDay = () =>{
 		setStatus(false)
@@ -65,22 +62,23 @@ function Salon(props) {
           .get()
           .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-              const attendantNameF = doc.data().name;
-  
-              firebase.firestore().collection('orders-shipped').doc().set({
+                
+              firebase.firestore().collection("orders-shipped").doc().set({
                   uid: firebase.auth().currentUser.uid,
-                  attendantName: attendantNameF,
+                  attendantName: doc.data().name,
                   clientName: clientNameValue,
                   tableNumber: tableNumberValue,
-                  requests: []
-                }, function(error) {
-                  if (error) {
-                    setStatusSendRequest("erroAoEnviar");
-                  } else {
-                    setStatusSendRequest("enviado"); 
-                  }
-                })
+                  requests: order
+              }).then(function() {
+                setStatusSendRequest("enviado");
+                console.log("Document successfully written!");
+              })
+              .catch(function(error) {
+                  setStatusSendRequest("erroAoEnviar");
+                  console.error("Error writing document: ");
+              })
             })
+            setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
           })
       }
     })    
@@ -140,9 +138,9 @@ function Salon(props) {
           </section>
                                         
           { status ? 
-            <><h3 className="font-style-orange">Menu Café Da Manhã</h3><section className='items-list row mx-auto'>{breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} butClick={addItem(item)} />)}</section></>
+            <><h3 className="font-style-orange">Menu Café Da Manhã</h3><section className='items-list row mx-auto'>{breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} butClick={() => {addItem(item)}} />)}</section></>
             :
-            <><h3 className="font-style-orange">Menu All Day</h3><section className='items-list row mx-auto'>{allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} butClick={addItem(item)} />)}</section></>           
+            <><h3 className="font-style-orange">Menu All Day</h3><section className='items-list row mx-auto'>{allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} butClick={() => {addItem(item)}} />)}</section></>           
           }
         </div>
 
@@ -163,7 +161,7 @@ function Salon(props) {
 
             <Button
               name='Enviar pedido para cozinha'
-              className='btn btn-send-to-kitchen btn-lg'
+              className='btn-send-to-kitchen btn-lg'
               handleClick={sendRequest}
             />
           
