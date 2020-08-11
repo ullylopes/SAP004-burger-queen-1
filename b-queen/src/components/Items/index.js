@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './items.css';
 import Button from '../Button';
 
-const Items = ({ key, name, price, options, props }) => {
+const Items = (props) => {
     return (
 
-        <div className='item-content my-sm-3' data-key={key}>
+        <div className='item-content my-sm-3' data-key={props.key}>
             <div className='d-flex font-style-orange justify-content-between my-sm-2'>
-                <span>{name} </span>
-                <span>R${price} </span>
+                <span>{props.name}</span>
+                <span>R${props.price} </span>
             </div>
 
             <div className="container-options-price d-flex justify-content-between">
@@ -18,6 +18,7 @@ const Items = ({ key, name, price, options, props }) => {
                 <Button
                     name='Incluir'
                     className='btn btn-add-item btn-sm my-sm-2 ml-sm-3 flex-row-reverse'
+                    handleClick={props.butClick}
                 />
             </div>
         </div >

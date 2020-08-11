@@ -19,44 +19,34 @@ function Salon(props) {
   const [tableNumberValue, setTableNumberValue] = useState("");
   const [status, setStatus] = useState(true);
   const [statusSendRequest, setStatusSendRequest] = useState("nulo");
+  const [order, setOrder] = useState([]);
   let menuAllDay = [];
   let menuBreakfast = [];
 
-  useEffect(() => {
+  const firebaseRequisition = (collectionP, arrayP, setP) =>{
     firebase
       .firestore()
-      .collection('allday')
+      .collection(collectionP)
       .get()
       .then(async (result) => {
         await result
           .docs
-          .forEach(doc => menuAllDay
+          .forEach(doc => arrayP
             .push({
               id: doc.id,
               ...doc.data()
             })
           )
-        setAllDay(menuAllDay);
-
+          setP(arrayP);
       })
+  }
+
+  useEffect(() => {
+    firebaseRequisition('allday', menuAllDay, setAllDay)
   });
-
+  
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection('breakfast')
-      .get()
-      .then(async (result) => {
-        await result
-          .docs
-          .forEach(doc => menuBreakfast
-            .push({
-              id: doc.id,
-              ...doc.data()
-            })
-          )
-		  setBreakfast(menuBreakfast);
-      })
+    firebaseRequisition('breakfast', menuBreakfast, setBreakfast)
   });
 
   const showMenuAllDay = () =>{
@@ -96,6 +86,12 @@ function Salon(props) {
     })    
   }
 
+  const addItem = (itemID) => {
+    
+    setOrder([...order, itemID]);
+  
+  }
+
   return (
     <div className='container-fluid'>
       <section>
@@ -108,6 +104,7 @@ function Salon(props) {
         />
       </section>
       <div className='row content-both-sides'>
+
         <div className='content-on-the-left col-md-7 col-sm-push-8 my-sm-2'>
           <section className='mx-auto row font-style-pink'>
             <div>
@@ -143,9 +140,9 @@ function Salon(props) {
           </section>
                                         
           { status ? 
-            <><h3 className="font-style-orange">Menu Café Da Manhã</h3><section className='items-list row mx-auto'>{breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)}</section></>
+            <><h3 className="font-style-orange">Menu Café Da Manhã</h3><section className='items-list row mx-auto'>{breakfast.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} butClick={addItem(item)} />)}</section></>
             :
-            <><h3 className="font-style-orange">Menu All Day</h3><section className='items-list row mx-auto'>{allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} />)}</section></>           
+            <><h3 className="font-style-orange">Menu All Day</h3><section className='items-list row mx-auto'>{allDay.map(item => <Items key={item.id} name={item.name} price={item.price} options={item.options} butClick={addItem(item)} />)}</section></>           
           }
         </div>
 
@@ -157,8 +154,7 @@ function Salon(props) {
               <div>Mesa: {tableNumberValue}</div>
             </div>
             <div className='item-summary-box mx-auto'>
-              <ItemSummary item_name='NOME DO ITEM1' />
-              <ItemSummary item_name='NOME DO ITEM2' />              
+              <ItemSummary item_name='NOME DO ITEM1' />                         
             </div>
             <div className='d-flex justify-content-between mx-auto p-1 font-style-pink my-sm-4'>
               <span>TOTAL </span>
