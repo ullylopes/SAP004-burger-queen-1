@@ -35,6 +35,9 @@ function Salon(props) {
       })
   });
 
+  //console.log(setBreakfast);
+
+
   return (
     <div className='salon-content container-fluid'>
       <section>
