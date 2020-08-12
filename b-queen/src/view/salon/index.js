@@ -72,10 +72,12 @@ function Salon(props) {
               }).then(function() {
                 setStatusSendRequest("enviado");
                 console.log("Document successfully written!");
+                setOrder([]);
               })
               .catch(function(error) {
                   setStatusSendRequest("erroAoEnviar");
                   console.error("Error writing document: ");
+                  setOrder([]);
               })
             })
             setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
@@ -90,7 +92,18 @@ function Salon(props) {
   
   }
 
-  //console.log(setBreakfast);
+  const removeItem = (itemID) => {
+    
+    const newOrder = [];
+    
+    for(let obj of order){
+      if(obj.id !== itemID.id){
+        newOrder.push(obj)
+      }
+    }    
+
+    setOrder(newOrder);
+  }
 
 
   return (
@@ -155,7 +168,7 @@ function Salon(props) {
               <div>Mesa: {tableNumberValue}</div>
             </div>
             <div className='item-summary-box mx-auto'>
-              <ItemSummary item_name='NOME DO ITEM1' />                         
+            {order.map(item => <ItemSummary key={item.id} item_name={item.name} price={item.price}  deleteClick={() => {removeItem(item)}} />)}                       
             </div>
             <div className='d-flex justify-content-between mx-auto p-1 font-style-pink my-sm-4'>
               <span>TOTAL </span>
