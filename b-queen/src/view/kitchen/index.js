@@ -16,22 +16,22 @@ const Kitchen = () => {
 	let requestsToMake = [];
 
 	const firebaseRequisition = (collectionP, arrayP, setP) =>{
-	firebase
-	  .firestore()
-	  .collection(collectionP)
-	  .get()
-	  .then(async (result) => {
-		await result
-		  .docs
-		  .forEach(doc => arrayP
-			.push({
-			  id: doc.id,
-			  ...doc.data()
-			})
-		  )
-		  setP(arrayP);
-	  })
-  	}
+        firebase
+          .firestore()
+          .collection(collectionP)
+          .get()
+          .then(async (result) => {
+            await result
+              .docs
+              .forEach(doc => arrayP
+                .push({
+                  id: doc.id,
+                  ...doc.data()
+                })
+              )
+              setP(arrayP);
+          })
+      }
 
 	useEffect(() => {
 		firebaseRequisition("orders-shipped", requestsToMake, setAllRequestsToMake);

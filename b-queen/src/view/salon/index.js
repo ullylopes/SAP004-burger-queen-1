@@ -70,17 +70,20 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
                   tableNumber: tableNumberValue,
                   requests: order
               }).then(function() {
-                setStatusSendRequest("enviado");
+                
                 console.log("Document successfully written!");
+                setStatusSendRequest("enviado");
                 setOrder([]);
                 setClientNameValue("");
                 setTableNumberValue("");
                 
-              })
-              .catch(function(error) {
-                  setStatusSendRequest("erroAoEnviar");
+              }).catch(function(error) {
+                  
                   console.error("Error writing document: ");
+                  setStatusSendRequest("erroAoEnviar");
                   setOrder([]);
+                  setClientNameValue("");
+                  setTableNumberValue("");
               })
             })
             setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
