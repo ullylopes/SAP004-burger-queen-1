@@ -18,6 +18,7 @@ const ItemSummary = (props) => {
             <Button
                 name='excluir'
                 className='deteleButton'
+                handleClick={props.deleteClick}
             />
             
         </div>
