@@ -23,27 +23,27 @@ function Salon(props) {
   let menuAllDay = [];
   let menuBreakfast = [];
 
-  const firebaseRequisition = (collectionP, arrayP, setP) =>{
-    firebase
-      .firestore()
-      .collection(collectionP)
-      .get()
-      .then(async (result) => {
-        await result
-          .docs
-          .forEach(doc => arrayP
-            .push({
-              id: doc.id,
-              ...doc.data()
-            })
-          )
-          setP(arrayP);
-      })
-  }
+const firebaseRequisition = (collectionP, arrayP, setP) =>{
+  firebase
+    .firestore()
+    .collection(collectionP)
+    .get()
+    .then(async (result) => {
+      await result
+        .docs
+        .forEach(doc => arrayP
+          .push({
+            id: doc.id,
+            ...doc.data()
+          })
+        )
+        setP(arrayP);
+    })
+}
 
   useEffect(() => {
-    firebaseRequisition('allday', menuAllDay, setAllDay)
-    firebaseRequisition('breakfast', menuBreakfast, setBreakfast)
+    firebaseRequisition('allday', menuAllDay, setAllDay);
+    firebaseRequisition('breakfast', menuBreakfast, setBreakfast);
   }, []);
 
   const showMenuAllDay = () =>{

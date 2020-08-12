@@ -11,6 +11,40 @@ import Card from '../../components/Card';
 
 const Historic = () => {
 
+    const [allOldOrders, setAllOldOrders] = useState([]);
+    let allOldOrdersArray = [];
+
+    const firebaseRequisition = (collectionP, arrayP, setP) =>{
+        firebase
+          .firestore()
+          .collection(collectionP)
+          .get()
+          .then(async (result) => {
+            await result
+              .docs
+              .forEach(doc => arrayP
+                .push({
+                  id: doc.id,
+                  ...doc.data()
+                })
+              )
+              setP(arrayP);
+          })
+    }
+
+    useEffect(() => {
+		firebaseRequisition("order-history", allOldOrdersArray, setAllOldOrders);
+    }, []);
+
+    const deleteOrder = (item) =>{
+
+        firebase.firestore().collection("order-history").doc(item.id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ");
+        });
+
+    }
 
     return(
 
@@ -28,34 +62,14 @@ const Historic = () => {
 
                 <div className="container">
 
-                	<Card
-                        tableNumber='4'                        
-                        client='Zaine'
-						worker='Amanda'
-						buttonTitle='DELETAR PEDIDO'
-                    />
+                    {
+                        allOldOrders.map(item =>
 
-					<Card
-                        tableNumber='4'                        
-                        client='Zaine'
-						worker='Amanda'
-						buttonTitle='DELETAR PEDIDO'
-                    />
+                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} sendClick={() =>{deleteOrder(item)}} buttonTitle='DELETAR PEDIDO' />
+                                                
+                        )
+                    }
 
-					<Card
-                        tableNumber='4'                        
-                        client='Zaine'
-						worker='Amanda'
-						buttonTitle='DELETAR PEDIDO'
-                    />
-
-					<Card
-                        tableNumber='4'                        
-                        client='Zaine'
-						worker='Amanda'
-						buttonTitle='DELETAR PEDIDO'
-                    />
-                    
                 </div>
         </div>
 
