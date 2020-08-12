@@ -24,57 +24,64 @@ function Login(props) {
 
   function signIn() {
 
-    setLoadingLogin(1)
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        dispatch({ type: 'LOG_IN', userEmail: email })
-        firebase
-          .firestore()
-          .collection('users')
-          .get()
-          .then((querySnapshot) => {
-            const emailArray = [];
-            querySnapshot
-              .forEach((doc) => {
-                emailArray
-                  .push(doc.data()
-                    .email);
-              });
+    if(email !== undefined && password !== undefined){
 
-            const status = emailArray.indexOf(email);
+      setLoadingLogin(1)
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          dispatch({ type: 'LOG_IN', userEmail: email })
+          firebase
+            .firestore()
+            .collection('users')
+            .get()
+            .then((querySnapshot) => {
+              const emailArray = [];
+              querySnapshot
+                .forEach((doc) => {
+                  emailArray
+                    .push(doc.data()
+                      .email);
+                });
 
-            if (status === -1) {
-              setLoadingLogin(0)
-              alert("Usuário não cadastrado!")
-            } else {
-              firebase
-                .firestore()
-                .collection('users')
-                .where('email', '==', email)
-                .get()
-                .then((querySnapshot) => {
-                  setLoadingLogin(0)
-                  querySnapshot.forEach((doc) => {
-                    if (doc.data().local === 'salao') {
-                      history.push('/salon')
-                    } else {
-                      history.push('/kitchen')
-                    }
+              const status = emailArray.indexOf(email);
+
+              if (status === -1) {
+                setLoadingLogin(0)
+                alert("Usuário não cadastrado!")
+              } else {
+                firebase
+                  .firestore()
+                  .collection('users')
+                  .where('email', '==', email)
+                  .get()
+                  .then((querySnapshot) => {
+                    setLoadingLogin(0)
+                    querySnapshot.forEach((doc) => {
+                      if (doc.data().local === 'salao') {
+                        history.push('/salon')
+                      } else {
+                        history.push('/kitchen')
+                      }
+                    })
                   })
-                })
-            }
-          })
-      }).catch(function (error) {
-        setLoadingLogin(0)
-        if (authErrors[error.code]) {
-          setErrorMsg(authErrors[error.code])
-        } else {
-          setErrorMsg('Tente novamente!')
-          return
-        }
-      })
+              }
+            })
+        }).catch(function (error) {
+          setLoadingLogin(0)
+          if (authErrors[error.code]) {
+            setErrorMsg(authErrors[error.code])
+          } else {
+            setErrorMsg('Tente novamente!')
+            return
+          }
+        })
+
+    }else{
+
+      
+    }
   };
   //chamada do login
   const loginCall = (e) => {

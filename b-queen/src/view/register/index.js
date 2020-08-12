@@ -32,7 +32,14 @@ const Register = () => {
       setErrorType('error')
       setErrorMessage('As senhas nos campos "Senha" e "Confirmar Senha" são diferentes!')
 
-    } else {
+    }else if(name === undefined || email === undefined){
+
+      setLoading(0)
+      setErrorType('error')
+      setErrorMessage('Insira um nome, email e senha para se cadastrar!')
+
+    }else{
+      
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
