@@ -20,6 +20,7 @@ const Readyorders = () =>  {
         firebase
           .firestore()
           .collection(collectionP)
+          .orderBy("hourReady", "asc")
           .get()
           .then(async (result) => {
             await result
@@ -65,7 +66,7 @@ const Readyorders = () =>  {
                     {
                         allOldOrders.map(item =>
 
-                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
+                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time={item.timeDifference + " ms"} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
                                                 
                         )
                     }

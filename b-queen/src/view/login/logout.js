@@ -6,14 +6,14 @@ import 'firebase/firestore';
 import history from '../../history';
 
 const LogOut = () => {
-    return (
+    
         firebase
             .auth()
             .signOut()
             .then(() => {
                 history.push('/login')
             })
-    )
+    
 };
 
 export default LogOut;

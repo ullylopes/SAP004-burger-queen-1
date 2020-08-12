@@ -68,7 +68,8 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
                   attendantName: doc.data().name,
                   clientName: clientNameValue,
                   tableNumber: tableNumberValue,
-                  requests: order
+                  requests: order,
+                  hourSend: Date.now()
               }).then(function() {
                 
                 console.log("Document successfully written!");

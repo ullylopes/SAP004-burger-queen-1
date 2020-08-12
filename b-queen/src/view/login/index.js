@@ -18,10 +18,13 @@ function Login(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   let [errorMsg, setErrorMsg] = useState();
+  const [loadingLogin, setLoadingLogin] = useState();
 
   const dispatch = useDispatch();
 
   function signIn() {
+
+    setLoadingLogin(1)
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -43,6 +46,7 @@ function Login(props) {
             const status = emailArray.indexOf(email);
 
             if (status === -1) {
+              setLoadingLogin(0)
               alert("Usuário não cadastrado!")
             } else {
               firebase
@@ -51,6 +55,7 @@ function Login(props) {
                 .where('email', '==', email)
                 .get()
                 .then((querySnapshot) => {
+                  setLoadingLogin(0)
                   querySnapshot.forEach((doc) => {
                     if (doc.data().local === 'salao') {
                       history.push('/salon')
@@ -62,6 +67,7 @@ function Login(props) {
             }
           })
       }).catch(function (error) {
+        setLoadingLogin(0)
         if (authErrors[error.code]) {
           setErrorMsg(authErrors[error.code])
         } else {
@@ -93,16 +99,21 @@ function Login(props) {
           onChange={
             (e) => setPassword(e.target.value)
           }
-        />
-        <Button
-          name='Entrar'
-          className='btn btn-login btn-lg btn-block'
-          handleClick={
-            (e) => {
-              loginCall(e)
-            }
+        />        
+
+        {
+            loadingLogin ? <div class="spinner-border text-danger spinner-register" role="status"><span class="sr-only">Loading...</span></div>
+              : <Button
+              name='Entrar'
+              className='btn btn-login btn-lg btn-block'
+              handleClick={
+                (e) => {
+                  loginCall(e)
+                }
+              }
+            />
           }
-        />
+
         {
           errorMsg ? (
             <div className='error-msg'> {errorMsg}</div>

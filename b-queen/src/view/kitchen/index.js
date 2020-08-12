@@ -19,6 +19,7 @@ const Kitchen = () => {
         firebase
           .firestore()
           .collection(collectionP)
+          .orderBy("hourSend", "desc")
           .get()
           .then(async (result) => {
             await result
@@ -50,7 +51,10 @@ const Kitchen = () => {
             attendantName: item.attendantName,
             clientName: item.clientName,
             tableNumber: item.tableNumber,
-            requests: item.requests
+            requests: item.requests,
+            hourSend: item.hourSend,
+            hourReady: Date.now(),
+            timeDifference: Date.now() - item.hourSend
 
         }).then(function() {
             console.log("Document successfully written!");
@@ -63,7 +67,10 @@ const Kitchen = () => {
             attendantName: item.attendantName,
             clientName: item.clientName,
             tableNumber: item.tableNumber,
-            requests: item.requests
+            requests: item.requests,
+            hourSend: item.hourSend,
+            hourReady: Date.now(),
+            timeDifference: Date.now() - item.hourSend
 
         }).then(function() {
             console.log("Document successfully written!");
@@ -91,7 +98,7 @@ const Kitchen = () => {
                 {
                     allRequestsToMake.map(item =>
 
-                        <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} sendClick={() =>{sendReadyOrders(item)}} buttonTitle='PRONTO PARA SERVIR' />
+                        <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time= "Em Preparo" sendClick={() =>{sendReadyOrders(item)}} buttonTitle='PRONTO PARA SERVIR' />
                                             
                     )
                 }
