@@ -12,6 +12,42 @@ import Card from '../../components/Card';
 
 const Readyorders = () =>  {
 
+
+    const [allOldOrders, setAllOldOrders] = useState([]);
+    let allOldOrdersArray = [];
+
+    const firebaseRequisition = (collectionP, arrayP, setP) =>{
+        firebase
+          .firestore()
+          .collection(collectionP)
+          .get()
+          .then(async (result) => {
+            await result
+              .docs
+              .forEach(doc => arrayP
+                .push({
+                  id: doc.id,
+                  ...doc.data()
+                })
+              )
+              setP(arrayP);
+          })
+    }
+
+    useEffect(() => {
+		firebaseRequisition("ready-orders", allOldOrdersArray, setAllOldOrders);
+    }, []);
+
+    const deleteOrder = (item) =>{
+
+        firebase.firestore().collection("ready-orders").doc(item.id).delete().then(function() {
+            console.log("Document successfully deleted!");
+        }).catch(function(error) {
+            console.error("Error removing document: ");
+        });
+
+    }
+
     return(
         <div>
             <Header
@@ -22,6 +58,18 @@ const Readyorders = () =>  {
                 	butClick2={() => history.push('/readyorders')}
                 />
                 <h1 className="for-title">Pedidos Prontos</h1>
+
+                <div className="container">
+
+                    {
+                        allOldOrders.map(item =>
+
+                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
+                                                
+                        )
+                    }
+
+                </div>
         </div>
     )
 }

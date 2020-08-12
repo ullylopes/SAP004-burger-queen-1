@@ -4,6 +4,12 @@ import './style.css';
 
 const Card = (props) => {
 
+    
+    let arrayRequestsNames = [];
+    for(let arrayItem of props.viewRequests){
+        arrayRequestsNames.push(arrayItem.name)
+    }  
+
     return (
 
         <div className="basic-structure mx-auto text-center">
@@ -12,29 +18,16 @@ const Card = (props) => {
             <h6>Atendente: {props.worker}</h6>
 
             <div className="view-orders mx-auto text-center">
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
-                Pedidos <br/>
+            {arrayRequestsNames.map(item => 
+                <p>{item}</p>
+            )}
             </div>
             
             <Button
                 name={props.buttonTitle}
                 type="button"
                 className="btn btn-card"
+                handleClick={props.sendClick}
             />
         </div>
 
