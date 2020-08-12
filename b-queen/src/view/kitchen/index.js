@@ -11,7 +11,7 @@ import Card from '../../components/Card';
 const Kitchen = () => {
 
     return(
-        <div className="div-kitchen">
+        <div>
                 
             <Header
                 name1='Em Andamento'

@@ -25,9 +25,6 @@ const Register = () => {
 
   const registerFirebase = () => {
 
-    //alert(window.screen.width) 1366
-    //alert(window.screen.height)768
-
     setLoading(1)
     setErrorType(null)
     if (password !== confirmPassword) {

@@ -14,7 +14,7 @@ const Historic = () => {
 
     return(
 
-        <div className="div-kitchen">
+        <div>
             
                 <Header
                     name1='Em Andamento'

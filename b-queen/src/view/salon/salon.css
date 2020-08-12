@@ -1,6 +1,5 @@
-.salon-content {
-    width : 100vw;
-    height: 100vh;
+.container-fluid{
+    padding: 0;
 }
 
 .content-both-sides {
@@ -12,9 +11,17 @@
 }
 
 .input {
-    width: 200px;
+    width: 170px;
 }
 
+.customizingInput{
+    color: #F21D56;
+    background-color: #ffffcc;
+}
+
+.customizingInput:focus{
+    color: #F21D56;
+}
 
 .select-menu-bttn {
     background-color: #F29435;
@@ -22,18 +29,20 @@
     height          : 100px;
 }
 
-.content-on-the-right {}
+.select-menu-bttn:hover{
+ color: #F21D56;   
+}
 
 .customer-info-box {
     color             : #FFD373;
     font-weight       : 900;
     font-size         : large;
     border-radius     : 8px;
-    width             : 218px;
+    width             : auto;
     height            : 87px;
-    /*left            : 10px;*/
     padding           : 10px;
     background-color  : #F2522E;
+    margin: auto;
 }
 
 .font-style-orange {
@@ -46,4 +55,26 @@
     color      : #F21D56;
     font-size  : larger;
     font-weight: bolder;
+}
+
+.forInputClientTable{
+    width: 120px;
+}
+
+.forExibition{
+    display: block;
+}
+
+.btn-send-to-kitchen {
+    font-weight: bold;
+    background-color: #F21D56;
+    color           : #FFD373;
+    border: 1px solid transparent;
+    width: inherit;
+    
+}
+
+.btn-send-to-kitchen:hover{
+    color           : #FFD373;
+    
 }

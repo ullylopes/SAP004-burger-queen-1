@@ -9,6 +9,7 @@ import Register from './view/register/index';
 import Salon from '../src/view/salon';
 import Kitchen from '../src/view/kitchen';
 import Historic from '../src/view/historic';
+import Readyorders from '../src/view/readyorders';
 import { Provider } from 'react-redux';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/salon' component={Salon} />
           <Route path='/kitchen' component={Kitchen} />
           <Route path='/historic' component={Historic} />
+          <Route path='/readyorders' component={Readyorders} />
           <Route component={() => <div>Essa página não existe!</div>} />
           
         </Switch>
