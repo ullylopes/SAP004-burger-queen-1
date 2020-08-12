@@ -71,7 +71,7 @@ const Kitchen = () => {
             console.error("Error writing document: ", error);
         });
 
-
+        setAllRequestsToMake(allRequestsToMake.filter((removeItem) => removeItem.id != item.id))
     }
 
     return(

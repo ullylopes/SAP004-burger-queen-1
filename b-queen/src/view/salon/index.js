@@ -73,6 +73,9 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
                 setStatusSendRequest("enviado");
                 console.log("Document successfully written!");
                 setOrder([]);
+                setClientNameValue("");
+                setTableNumberValue("");
+                
               })
               .catch(function(error) {
                   setStatusSendRequest("erroAoEnviar");
@@ -127,7 +130,9 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
                 className='input customizingInput' 
                 type='text' 
                 name="clientName" 
-                onChange={(e) => setClientNameValue(e.target.value)}/>
+                onChange={(e) => setClientNameValue(e.target.value)}
+                value={clientNameValue}
+              />
             </div>
             <div className="forDicClientTable ml-3">              
               <label for="clientTable">Nº da Mesa: </label>
@@ -136,7 +141,8 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
                 type='text' 
                 name="clientTable" 
                 onChange={(e) => setTableNumberValue(e.target.value)}
-                />
+                value={tableNumberValue}
+              />
             </div>
           </section>
           <section className='select-menu'>

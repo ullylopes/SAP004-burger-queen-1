@@ -44,6 +44,7 @@ const Historic = () => {
             console.error("Error removing document: ");
         });
 
+        setAllOldOrders(allOldOrders.filter((removeItem) => removeItem.id != item.id))
     }
 
     return(
