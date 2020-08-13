@@ -19,6 +19,7 @@ function Salon(props) {
   const [tableNumberValue, setTableNumberValue] = useState("");
   const [status, setStatus] = useState(true);
   const [statusSendRequest, setStatusSendRequest] = useState("nulo");
+  const [statusSendRequestValue, setStatusSendRequestValue] = useState("nuloValue");
   const [order, setOrder] = useState([]);
   let menuAllDay = [];
   let menuBreakfast = [];
@@ -55,42 +56,60 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
   };  
 
   const sendRequest = () => {
-    
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
-          .get()
-          .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                
-              firebase.firestore().collection("orders-shipped").doc().set({
-                  uid: firebase.auth().currentUser.uid,
-                  attendantName: doc.data().name,
-                  clientName: clientNameValue,
-                  tableNumber: tableNumberValue,
-                  requests: order,
-                  hourSend: Date.now()
-              }).then(function() {
-                
-                console.log("Document successfully written!");
-                setStatusSendRequest("enviado");
-                setOrder([]);
-                setClientNameValue("");
-                setTableNumberValue("");
-                
-              }).catch(function(error) {
+      
+    if((tableNumberValue !== "" && clientNameValue !== "" ) && order.length !== [].length){
+      //tableNumberValue !== ""   clientNameValue !== ""      order.length !== [].length
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
+            .get()
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
                   
-                  console.error("Error writing document: ");
-                  setStatusSendRequest("erroAoEnviar");
+                firebase.firestore().collection("orders-shipped").doc().set({
+                    uid: firebase.auth().currentUser.uid,
+                    attendantName: doc.data().name,
+                    clientName: clientNameValue,
+                    tableNumber: tableNumberValue,
+                    requests: order,
+                    hourSend: Date.now()
+                }).then(function() {
+                  
+                  console.log("Document successfully written!");
+                  setStatusSendRequest("enviado");
                   setOrder([]);
                   setClientNameValue("");
                   setTableNumberValue("");
+                  
+                }).catch(function(error) {
+                    
+                    console.error("Error writing document: ");
+                    setStatusSendRequest("erroAoEnviar");
+                    setOrder([]);
+                    setClientNameValue("");
+                    setTableNumberValue("");
+                })
               })
+              setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
             })
-            setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
-          })
-      }
-    })    
+        }
+      }) 
+
+    }else{
+
+      if(tableNumberValue == ""){
+        setStatusSendRequestValue("tableNumberNulo")
+        setTimeout(() => {setStatusSendRequestValue("nulo")}, 2000)
+      }else if(clientNameValue == ""){
+        setStatusSendRequestValue("clientNameNulo")
+        setTimeout(() => {setStatusSendRequestValue("nulo")}, 2000)
+      }else if(order.length == [].length){
+        setStatusSendRequestValue("orderNulo")
+        setTimeout(() => {setStatusSendRequestValue("nulo")}, 2000)
+      }  
+      
+    }
   }
 
   const addItem = (itemID) => {
@@ -194,6 +213,13 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
             { statusSendRequest == "enviado" ? <div class="alert alert-success" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Pedido enviado com <strong>SUCESSO</strong>!</div> : "" }
             
             { statusSendRequest == "erroAoEnviar" ? <div class="alert alert-warning" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Houve um <strong>ERRO</strong> ao enviar o pedido!</div> : "" }
+
+            { statusSendRequestValue == "tableNumberNulo" ? <div class="alert alert-danger" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Insira o número da mesa! </div> : "" }
+              
+            { statusSendRequestValue == "clientNameNulo" ? <div class="alert alert-danger" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Insira o nome do cliente! </div> :"" }
+
+            { statusSendRequestValue == "orderNulo" ? <div class="alert alert-danger" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Adicione itens para enviar o pedido! </div> : "" }
+
         </div>
 
       </div>
