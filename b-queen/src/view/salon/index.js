@@ -62,40 +62,40 @@ function Salon(props) {
     if ((tableNumberValue !== "" && clientNameValue !== "") && order.length !== [].length) {
       //tableNumberValue !== ""   clientNameValue !== ""      order.length !== [].length
 
-      
-          firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
-            .get()
-            .then((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
 
-                firebase.firestore().collection("orders-shipped").doc().set({
-                  uid: firebase.auth().currentUser.uid,
-                  attendantName: doc.data().name,
-                  clientName: clientNameValue,
-                  tableNumber: tableNumberValue,
-                  requests: order,
-                  hourSend: Date.now()
-                }).then(function () {
+      firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
 
-                  console.log("Document successfully written!");
-                  setStatusSendRequest("enviado");
-                  setOrder([]);
-                  setClientNameValue("");
-                  setTableNumberValue("");
+            firebase.firestore().collection("orders-shipped").doc().set({
+              uid: firebase.auth().currentUser.uid,
+              attendantName: doc.data().name,
+              clientName: clientNameValue,
+              tableNumber: tableNumberValue,
+              requests: order,
+              hourSend: Date.now()
+            }).then(function () {
 
-                }).catch(function (error) {
+              console.log("Document successfully written!");
+              setStatusSendRequest("enviado");
+              setOrder([]);
+              setClientNameValue("");
+              setTableNumberValue("");
 
-                  console.error("Error writing document: ");
-                  setStatusSendRequest("erroAoEnviar");
-                  setOrder([]);
-                  setClientNameValue("");
-                  setTableNumberValue("");
-                })
-                setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
-                              })              
+            }).catch(function (error) {
+
+              console.error("Error writing document: ");
+              setStatusSendRequest("erroAoEnviar");
+              setOrder([]);
+              setClientNameValue("");
+              setTableNumberValue("");
             })
-            
-    }else{
+            setTimeout(() => { setStatusSendRequest("nulo") }, 4000)
+          })
+        })
+
+    } else {
       if (tableNumberValue == "") {
         setStatusSendRequestValue("tableNumberNulo")
         setTimeout(() => { setStatusSendRequestValue("nulo") }, 2000)
@@ -119,22 +119,16 @@ function Salon(props) {
       setOrder([...order]);
     }
   };
-
   const addItemSummary = (itemID) => {
     const index = order.findIndex((item) => item.id === itemID);
     order[index].quantity++
     setOrder([...order]);
   }
-
   const reduceItemSummary = (itemID) => {
     const index = order.findIndex((item) => item.id === itemID);
     order[index].quantity--
     setOrder([...order]);
   }
-
-
-
-
 
   const removeItem = (itemID) => {
     const newOrder = [];
