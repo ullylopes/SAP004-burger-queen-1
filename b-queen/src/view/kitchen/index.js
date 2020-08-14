@@ -3,10 +3,11 @@ import './kitchen.css';
 import '../../reset.css';
 import firebase from '../../config/firebase';
 import { Link } from 'react-router-dom';
-import history from '../../history';
+import { history } from '../../history';
 import 'firebase/firestore';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
@@ -80,6 +81,10 @@ const Kitchen = () => {
 
         setAllRequestsToMake(allRequestsToMake.filter((removeItem) => removeItem.id != item.id))
     }
+
+    console.log(useSelector(state => state.userLogged))
+    console.log(useSelector(state => state.userEmail))
+    console.log(useSelector(state => state.userLocal))
 
     return(
         <div>

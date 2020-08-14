@@ -4,12 +4,13 @@ import 'firebase/firestore';
 import './salon.css';
 import '../../reset.css';
 import { Link } from 'react-router-dom';
-import history from '../../history';
+import { history } from '../../history';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Items from '../../components/Items';
 import ItemSummary from '../../components/Item';
+import { useSelector } from 'react-redux';
 
 function Salon(props) {
 
@@ -131,6 +132,9 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
     setOrder(newOrder);
   }
 
+  console.log(useSelector(state => state.userLogged))
+  console.log(useSelector(state => state.userEmail))
+  console.log(useSelector(state => state.userLocal))
 
   return (
     <div className='container-fluid'>

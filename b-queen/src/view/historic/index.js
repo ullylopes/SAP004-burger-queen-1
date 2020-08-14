@@ -3,7 +3,7 @@ import '../kitchen/kitchen.css';
 import '../../reset.css';
 import firebase from '../../config/firebase';
 import { Link } from 'react-router-dom';
-import history from '../../history';
+import { history } from '../../history';
 import 'firebase/firestore';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
