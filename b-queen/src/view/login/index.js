@@ -18,57 +18,70 @@ function Login(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   let [errorMsg, setErrorMsg] = useState();
+  const [loadingLogin, setLoadingLogin] = useState();
 
   const dispatch = useDispatch();
 
   function signIn() {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        dispatch({ type: 'LOG_IN', userEmail: email })
-        firebase
-          .firestore()
-          .collection('users')
-          .get()
-          .then((querySnapshot) => {
-            const emailArray = [];
-            querySnapshot
-              .forEach((doc) => {
-                emailArray
-                  .push(doc.data()
-                    .email);
-              });
 
-            const status = emailArray.indexOf(email);
+    if(email !== undefined && password !== undefined){
 
-            if (status === -1) {
-              alert("Usuário não cadastrado!")
-            } else {
-              firebase
-                .firestore()
-                .collection('users')
-                .where('email', '==', email)
-                .get()
-                .then((querySnapshot) => {
-                  querySnapshot.forEach((doc) => {
-                    if (doc.data().local === 'salao') {
-                      history.push('/salon')
-                    } else {
-                      history.push('/kitchen')
-                    }
+      setLoadingLogin(1)
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          dispatch({ type: 'LOG_IN', userEmail: email })
+          firebase
+            .firestore()
+            .collection('users')
+            .get()
+            .then((querySnapshot) => {
+              const emailArray = [];
+              querySnapshot
+                .forEach((doc) => {
+                  emailArray
+                    .push(doc.data()
+                      .email);
+                });
+
+              const status = emailArray.indexOf(email);
+
+              if (status === -1) {
+                setLoadingLogin(0)
+                alert("Usuário não cadastrado!")
+              } else {
+                firebase
+                  .firestore()
+                  .collection('users')
+                  .where('email', '==', email)
+                  .get()
+                  .then((querySnapshot) => {
+                    setLoadingLogin(0)
+                    querySnapshot.forEach((doc) => {
+                      if (doc.data().local === 'salao') {
+                        history.push('/salon')
+                      } else {
+                        history.push('/kitchen')
+                      }
+                    })
                   })
-                })
-            }
-          })
-      }).catch(function (error) {
-        if (authErrors[error.code]) {
-          setErrorMsg(authErrors[error.code])
-        } else {
-          setErrorMsg('Tente novamente!')
-          return
-        }
-      })
+              }
+            })
+        }).catch(function (error) {
+          setLoadingLogin(0)
+          if (authErrors[error.code]) {
+            setErrorMsg(authErrors[error.code])
+          } else {
+            setErrorMsg('Tente novamente!')
+            return
+          }
+        })
+
+    }else{
+
+      
+    }
   };
   //chamada do login
   const loginCall = (e) => {
@@ -93,16 +106,21 @@ function Login(props) {
           onChange={
             (e) => setPassword(e.target.value)
           }
-        />
-        <Button
-          name='Entrar'
-          className='btn btn-login btn-lg btn-block'
-          handleClick={
-            (e) => {
-              loginCall(e)
-            }
+        />        
+
+        {
+            loadingLogin ? <div class="spinner-border text-danger spinner-register" role="status"><span class="sr-only">Loading...</span></div>
+              : <Button
+              name='Entrar'
+              className='btn btn-login btn-lg btn-block'
+              handleClick={
+                (e) => {
+                  loginCall(e)
+                }
+              }
+            />
           }
-        />
+
         {
           errorMsg ? (
             <div className='error-msg'> {errorMsg}</div>

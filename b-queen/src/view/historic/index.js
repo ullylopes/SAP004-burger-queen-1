@@ -18,6 +18,7 @@ const Historic = () => {
         firebase
           .firestore()
           .collection(collectionP)
+          .orderBy("hourSend", "desc")
           .get()
           .then(async (result) => {
             await result
@@ -44,6 +45,7 @@ const Historic = () => {
             console.error("Error removing document: ");
         });
 
+        setAllOldOrders(allOldOrders.filter((removeItem) => removeItem.id != item.id))
     }
 
     return(
@@ -65,7 +67,7 @@ const Historic = () => {
                     {
                         allOldOrders.map(item =>
 
-                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} sendClick={() =>{deleteOrder(item)}} buttonTitle='DELETAR PEDIDO' />
+                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time={item.timeDifference + " ms"} sendClick={() =>{deleteOrder(item)}} buttonTitle='DELETAR PEDIDO' />
                                                 
                         )
                     }
