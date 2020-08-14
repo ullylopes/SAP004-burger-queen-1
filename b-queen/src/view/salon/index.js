@@ -61,8 +61,7 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
     if((tableNumberValue !== "" && clientNameValue !== "" ) && order.length !== [].length){
       //tableNumberValue !== ""   clientNameValue !== ""      order.length !== [].length
 
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
+      
           firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
             .get()
             .then((querySnapshot) => {
@@ -91,12 +90,12 @@ const firebaseRequisition = (collectionP, arrayP, setP) =>{
                     setClientNameValue("");
                     setTableNumberValue("");
                 })
+                setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
+                
               })
-              setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
+              
             })
-        }
-      }) 
-
+            
     }else{
 
       if(tableNumberValue == ""){

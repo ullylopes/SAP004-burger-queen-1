@@ -103,7 +103,7 @@ const Kitchen = () => {
                 {
                     allRequestsToMake.map(item =>
 
-                        <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time= "Em Preparo" sendClick={() =>{sendReadyOrders(item)}} buttonTitle='PRONTO PARA SERVIR' />
+                        <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} sendClick={() =>{sendReadyOrders(item)}} buttonTitle='PRONTO PARA SERVIR' />
                                             
                     )
                 }

@@ -66,7 +66,7 @@ const Readyorders = () =>  {
                     {
                         allOldOrders.map(item =>
 
-                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time={item.timeDifference + " ms"} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
+                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time={ "Tempo de Preparo: " + item.timeDifference + " ms"} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
                                                 
                         )
                     }
