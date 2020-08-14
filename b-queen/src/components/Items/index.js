@@ -12,9 +12,13 @@ const Items = (props) => {
             </div>
 
             <div className="container-options-price d-flex justify-content-between">
-                <select className="options ">
-                    <option selected disabled>Selecione</option>
-                </select>
+                {props.options ? (
+                    <select className="options" onChange={(e) => props.setOptions(e.target.value)}>
+                        <option selected disabled>Selecione</option>
+                        {props.options.map(option => <option value={option}>{option}</option>)}
+                    </select>
+                ) : ''}
+
                 <Button
                     name='Incluir'
                     className='btn btn-add-item btn-sm my-sm-2 ml-sm-3 flex-row-reverse'
