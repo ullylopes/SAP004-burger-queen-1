@@ -3,13 +3,14 @@ import firebase from '../../config/firebase';
 import 'firebase/firestore';
 import './salon.css';
 import '../../reset.css';
-//import { Link } from 'react-router-dom';
-import history from '../../history';
+import { Link } from 'react-router-dom';
+import { history } from '../../history';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Items from '../../components/Items';
 import ItemSummary from '../../components/Item';
+import { useSelector } from 'react-redux';
 
 function Salon(props) {
 
@@ -61,8 +62,7 @@ function Salon(props) {
     if ((tableNumberValue !== "" && clientNameValue !== "") && order.length !== [].length) {
       //tableNumberValue !== ""   clientNameValue !== ""      order.length !== [].length
 
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
+      
           firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
             .get()
             .then((querySnapshot) => {
@@ -91,14 +91,11 @@ function Salon(props) {
                   setClientNameValue("");
                   setTableNumberValue("");
                 })
-              })
-              setTimeout(() => { setStatusSendRequest("nulo") }, 4000)
+                setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
+                              })              
             })
-        }
-      })
-
-    } else {
-
+            
+    }else{
       if (tableNumberValue == "") {
         setStatusSendRequestValue("tableNumberNulo")
         setTimeout(() => { setStatusSendRequestValue("nulo") }, 2000)
@@ -154,6 +151,9 @@ function Salon(props) {
     return order ? totalItemPrice : '0'
   }
 
+  console.log(useSelector(state => state.userLogged))
+  console.log(useSelector(state => state.userEmail))
+  console.log(useSelector(state => state.userLocal))
 
   return (
     <div className='container-fluid'>

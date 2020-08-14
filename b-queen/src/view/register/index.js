@@ -5,7 +5,7 @@ import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Input from '../../components/Input'
 import { Link } from 'react-router-dom';
-import history from '../../history';
+import { history } from '../../history';
 import 'firebase/firestore';
 
 const Register = () => {

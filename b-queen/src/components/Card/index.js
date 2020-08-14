@@ -22,7 +22,7 @@ const Card = (props) => {
                 <p>{item}</p>
             )}
             </div>
-            <h6>Tempo de Preparo: {props.time}</h6>
+            <h6>{props.time}</h6>
             <Button
                 name={props.buttonTitle}
                 type="button"
