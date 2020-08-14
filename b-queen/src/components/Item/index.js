@@ -10,8 +10,8 @@ const ItemSummary = (props) => {
             <div className='font-style text-center'>{props.item_name}</div>
 
             <div className="quantity-and-price">
-                <button className='btn-quantity'>-</button>
-                <span className='counter'>1{props.quantity}</span>
+                <button className='btn-quantity' handleClick={props.reduceClick}>-</button>
+                <span className='counter'>{props.quantity}</span>
                 <button className='btn-quantity'>+</button>
                 <span className='font-style'> R${props.price} </span>
             </div>
@@ -20,7 +20,7 @@ const ItemSummary = (props) => {
                 className='deteleButton'
                 handleClick={props.deleteClick}
             />
-            
+
         </div>
 
     )
