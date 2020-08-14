@@ -1,28 +1,50 @@
 .login-content {
-    width: 100%;
+    width: 100vw;
     padding: 15%;
     margin: auto;
-    background-color: #F2B737;
     height: 100vh;
+    align-items: center;
 }
 
 .btn-login {
     background-color: #F21D56;
     color: #F2B737;
+    /*max-width: 650px;*/
 }
 
 .btn-login:hover {
-    background-color: #F2522E;
-    color: #ffffff;
-
+    background-color: #facbca;
+    color: #F21D56;
 }
 
-.opcoes-login a {
+.form-signin {
+    max-width: 350px;
+}
+
+.nav-register{
+    color: #F21D56;
+    background-color: #F2B737
+}
+
+.nav-register a {
     text-decoration: none;
     color: #F21D56;
     transition: .3s ease-in;
+    
 }
 
-.opcoes-login a:hover {
-    color: #ffffff;
+.nav-register a:hover {
+    color: #facbca;
+}
+
+.error-msg {
+    font-size: larger;
+    text-align: center;
+    color: #F21D56;
+    border-radius: 8px;
+    margin-top: 3%;
+    border: 2px solid #F21D56;
+    padding: 2%;
+    background-color: #f7d7d6;
+    font-weight: bold;
 }
